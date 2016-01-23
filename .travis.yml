@@ -6,6 +6,7 @@ before_script:
 after_success:
 - cat ./coverage/lcov/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
-  profider: heroku
+  provider: heroku
+  app: quizdeck
   api_key:
     secure: aIlxs+z5K8y12wpj/oNdNsXQGho36pVBiJK2YQl9sdllXMa9HRzcRNBBvIuovKdomKWqxvD0TNcTK3HoPTBzwykYbajDQon1s4aAg/HKXRdLaQD8aDnPDl9B+KlHLxdEHJmr/whjhBTqCjEIBkBzRQCxioRyGbahcAyQPimT8OmapQp/dv+E1VDvSGWO28mWXzSGgk/LCuKDbY0Y7AjOTjJpamMmrRDdfzukan8HftEsbT/i2B7DtueAowQIen8NDkGLceKZWKmDvzTh+jQQV4Hd3hpA+dxzhQk45y9Tf4d3KcnwiGTmXlTG10IfLeVIb5uA2YANdIkchCZ6VawL24czbpB8q/o2atJnGIosVTs8v3bZ8Ug5JGFJuyZuenuXpxVVyFr2xe9ZRYMU/9S8Rum+RZ5Fw1lqsPmLe34hrE0x26/ShmPCKZfuE9Mt3VnpQUjCRaSUhpIqTqCXAFWveOP8I0OnJ4b5RUlm3zm4tq6WBlRFpcsqJhV60dgdrI+NS0shqn7ZhZ4rANiaEjsCeSsjKo+f9dGdADV6lrc82dkI8I6ZjZ8HRkU6SzMWUvMfkE5KgeKacAA04RYhNjz0AZpR6KtFQ8a4rknrxrCV54RG/XmIgmr5+g5u8RVsFLl1CvRYwbkGy3OqmeCzev9+Nrqye8Bk59v2tfF+t/5Ugx8=
