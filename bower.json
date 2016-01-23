@@ -1,0 +1,15 @@
+{
+  "name": "quizdeck-client",
+  "description": "The client for QuizDeck",
+  "main": "server.js",
+  "license": "MIT",
+  "keywords": [
+    "angular"
+  ],
+  "homepage": "https://github.com/bcroden/QuizDeck-Client",
+  "moduleType": [],
+  "private": true,
+  "dependencies": {
+    "angular": "~1.4.8"
+  }
+}

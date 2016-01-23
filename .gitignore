@@ -1,0 +1,6 @@
+.tmp/
+.vscode/
+coverage/
+lib/
+node_modules/
+typings/
