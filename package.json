@@ -4,8 +4,9 @@
   "description": "The client for QuizDeck",
   "main": "server.js",
   "scripts": {
+    "gulp": "gulp",
     "postinstall": "bower install && tsd install && gulp build",
-    "serve": "node server.js",
+    "serve": "gulp build && node server.js",
     "test": "gulp test"
   },
   "repository": {
@@ -25,9 +26,10 @@
     "express": "^4.13.3"
   },
   "devDependencies": {
-    "angular-mocks": "^1.4.8",
+    "angular-mocks": "^1.4.9",
     "autoprefixer": "^6.3.1",
     "bower": "^1.7.2",
+    "browser-sync": "^2.11.1",
     "coveralls": "^2.11.6",
     "del": "^2.2.0",
     "event-stream": "^3.3.2",
@@ -38,7 +40,6 @@
     "gulp-inject": "^3.0.0",
     "gulp-ng-annotate": "^1.1.0",
     "gulp-ng-config": "^1.2.1",
-    "gulp-order": "^1.1.1",
     "gulp-postcss": "^6.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.1.1",

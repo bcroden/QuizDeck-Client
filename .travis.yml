@@ -11,4 +11,5 @@ deploy:
     secure: TVI3rFAtLSc4F/xw8blEi7LywQvpsEb/Hr4OprJ9lndka4YNwVih4YMwz7xv7Pohht5OV7XMNxLEB3NqdxiUNlEfIc077OqtqBmJ7b5uAGjVv8E2i6HpCB9Yy2qjy6qegC3JLVEoEb/qsubQsOnPL8hSSSn4F2KH8SHoeAlIVXTWJSgrx6j/PK1GJrNi8uL5/Q93sbfkcGlBjB222qHxXRyXSdnbyN5kdZUQmGGhwhIB5p4I5Y04wDkrmpE/kNtvUMYYYkJNbH/XgFnvDVnaB6w07ncYEch06/+JLDtiyU1t9OGyBMrtFJrxk7nL9s/pbFcpr56HElV4NaPTRIxiRRtitGOcpKncOqzncMJ4MEGynRaRw/fxoOnzWefYUnlm5D9/RCMMyahn/TC1niqZAb+9OmJ2Ng9s2+4W9bTW2zT/mmfzRi4OU5IndUSU5RqGgO+a7NIR/pQaui5oBkQC1137L/Ztm/m7D+V4iCi3cXtkYoC67rIRekJGCFIk+ObtS0S6vpEpvTuj/rio7TMKKpX54MOo5Qf6bzHzbX8Szgl++GZCpcyid93puMcDY6egmm3H5NTP9BWz3D7Lw41FGCfevtXeDvdSLG4DR/VH3E6/hd9FPdaSG1Qndw3e/UEJrJ+4ginABzqsE1VaF2jud85gxoFqde187es7iLLeKzg=
   app: quizdeck
   on:
+    branch: master
     repo: bcroden/QuizDeck-Client

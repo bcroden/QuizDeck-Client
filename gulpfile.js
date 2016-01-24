@@ -1,5 +1,7 @@
 'use strict';
+
 // Node APIs
+var exec            = require('child_process').exec;
 var path            = require('path');
 
 // Node Modules
@@ -19,6 +21,7 @@ var uglify          = require('gulp-uglify');
 var watch           = require('gulp-watch');
 
 var autoprefixer    = require('autoprefixer');
+var browserSync     = require('browser-sync');
 var del             = require('del');
 var runSequence     = require('run-sequence');
 var Server          = require('karma').Server;
@@ -27,7 +30,7 @@ var out = './public/';
 var src = './src/';
 var tmp = './.tmp/';
 
-var env = 'local';
+var env = 'prod';
 
 gulp.task('clean', function() {
     del.sync(out);
@@ -47,9 +50,7 @@ gulp.task('angular:config', function() {
 
 gulp.task('angular:template', function() {
     return gulp
-        .src([
-            src + '**/*.html'
-        ])
+        .src(src + '**/*.html')
         .pipe(ngTemplatecache('templates.module.js', {
             module: 'app.templates',
             moduleSystem: 'IIFE',
@@ -110,7 +111,25 @@ gulp.task('tdd', ['build'], function() {
     karma(false);
 });
 
-gulp.task('default', ['tdd'], function() {
+gulp.task('server', function() {
+    exec('node server.js', function(err, stdout, stderr) {
+        console.log(stdout);
+        console.log(stderr);
+    });
+});
+
+gulp.task('browser-sync', ['server'], function() {
+    browserSync.create().init(null, {
+		proxy: "http://localhost:8080",
+        files: ["public/**/*"],
+        browser: "google chrome",
+        port: 8081,
+        online: true,
+        notify: false
+	});
+});
+
+gulp.task('watch', function() {
     watch([
         src + '**/*.html',
         src + '**/*.js',
@@ -124,6 +143,11 @@ gulp.task('default', ['tdd'], function() {
     watch(src + '**/*.s@(a|c)ss', function() {
         gulp.start('sass');
     });
+});
+
+gulp.task('default', function() {
+    env = 'local';
+    runSequence(['tdd', 'watch'], 'browser-sync')
 });
 
 ////////////////
