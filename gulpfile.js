@@ -89,7 +89,7 @@ gulp.task('sass', function() {
         .src(src + '**/*.s@(a|c)ss')
         .pipe(injectSass(gulp.src(src + '**/_*.s@(a|c)ss')))
         .pipe(sourcemaps.init())
-            .pipe(sass())
+            .pipe(sass().on('error', function() {}))
             .pipe(postcss([
                 autoprefixer({browsers: ['last 2 versions']}),
             ]))

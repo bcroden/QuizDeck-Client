@@ -9,7 +9,7 @@ https://quizdeck.herokuapp.com/
 
 # Set Up Your Dev Environment
 
-- This site runs on [nodejs](https://nodejs.org). You will need to download and install it before proceding.
+- This site runs on [node.js](https://nodejs.org). You will need to download and install it before proceding.
   - [Travis](https://travis-ci.org/bcroden/QuizDeck-Client) uses nodejs 4.x to test against, consider using the latest 4.x version.
 
 - Check that node and npm are properly installed.

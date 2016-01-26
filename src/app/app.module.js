@@ -4,6 +4,7 @@
     angular
         .module('app', [
             'app.config',
-            'app.templates'
+            'app.templates',
+            'ngRoute'
         ]);
 })();

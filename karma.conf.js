@@ -9,6 +9,7 @@ module.exports = function(config) {
         },
         files: [
             './lib/angular/angular.js',
+            './lib/angular-route/angular-route.min.js',
 
             './node_modules/angular-mocks/angular-mocks.js',
             './node_modules/ng-describe/dist/ng-describe.js',
