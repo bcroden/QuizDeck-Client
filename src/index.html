@@ -4,16 +4,27 @@
         <meta charset="utf-8">
         <title>QuizDeck</title>
         
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        
+        <link href="/lib/materialize/dist/css/materialize.min.css" rel="stylesheet">
+        
         <link href="/app.min.css" rel="stylesheet">
+        
+        <script src="/lib/jquery/dist/jquery.min.js"></script>
+        <script src="/lib/materialize/dist/js/materialize.min.js"></script>
         
         <script src="/lib/angular/angular.min.js"></script>
         <script src="/lib/angular-route/angular-route.min.js"></script>
+        <script src="/lib/angular-materialize/src/angular-materialize.js"></script>
         
         <script src="/app.min.js"></script>
     </head>
     <body>
-        <div ng-app="app">
-            <ng-view></ng-view>
+        <div ng-app="app" ng-strict-di>
+            <qd-navbar></qd-navbar>
+            <div class="container">
+                <ng-view></ng-view>
+            </div>
         </div>
     </body>
 </html>

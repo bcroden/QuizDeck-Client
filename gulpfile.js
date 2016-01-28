@@ -10,6 +10,7 @@ var gulp            = require('gulp');
 var ngTemplatecache = require('gulp-angular-templatecache');
 var concat          = require('gulp-concat');
 var cssnano         = require('gulp-cssnano');
+var htmlmin         = require('gulp-htmlmin');
 var inject          = require('gulp-inject');
 var ngAnnotate      = require('gulp-ng-annotate');
 var ngConfig        = require('gulp-ng-config');
@@ -50,7 +51,13 @@ gulp.task('angular:config', function() {
 
 gulp.task('angular:template', function() {
     return gulp
-        .src(src + '**/*.html')
+        .src([
+            src + '**/*.html',
+            '!' + src + 'index.html'
+        ])
+        .pipe(htmlmin({
+            collapseWhitespace: true
+        }))
         .pipe(ngTemplatecache('templates.module.js', {
             module: 'app.templates',
             moduleSystem: 'IIFE',
@@ -81,6 +88,9 @@ gulp.task('js', [
 gulp.task('html', function() {
    return gulp
        .src(src + 'index.html')
+       .pipe(htmlmin({
+            collapseWhitespace: true
+        }))
        .pipe(gulp.dest(out));
 });
 
@@ -175,8 +185,8 @@ function injectSass(src) {
                 name = name.substr(1, name.length-6);
                 if(dir !== '')
                     name = '/' + name;
-                var loc = (dir !== '') ? dir + '/' + name : name;
-                return '@import "' + loc.replace(/\\/g, '/') + '"';
+                var loc = (dir !== '') ? dir + name : name;
+                return '@import "' + loc.replace(/\\/g, '/') + '";';
             }
         }
     });

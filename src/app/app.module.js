@@ -5,6 +5,7 @@
         .module('app', [
             'app.config',
             'app.templates',
-            'ngRoute'
+            'ngRoute',
+            'ui.materialize'
         ]);
 })();

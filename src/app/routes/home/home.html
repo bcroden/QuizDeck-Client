@@ -1,4 +1,11 @@
 <div class="home">
-    <h1>Hello World!</h1>
-    <p>We now have angular routing working!</p>
+    <div class="row">
+        <div class="col s12 offset-m3 m6 offset-l4 l4 right-align">\
+            <div input-field>
+                <input type="text" ng-model="home.quizCode">
+                <label>Quiz Code</label>
+            </div>
+            <button class="blue darken-1 btn waves-effect waves-light" ng-click="home.quizSearch()">Search</button>
+        </div>
+    </div>
 </div>

@@ -11,6 +11,8 @@
   "private": true,
   "dependencies": {
     "angular": "~1.4.9",
-    "angular-route": "~1.4.9"
+    "angular-route": "~1.4.9",
+    "Materialize": "materialize#^0.97.5",
+    "angular-materialize": "^0.1.2"
   }
 }
