@@ -9,7 +9,7 @@
         var directive = {
             bindToController: true,
             controller: Controller,
-            controllerAs: 'vm',
+            controllerAs: 'qdNavbar',
             link: link,
             restrict: 'E',
             scope: {

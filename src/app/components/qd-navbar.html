@@ -1,16 +1,16 @@
 <nav class="qd-navbar blue darken-1">
     <div class="nav=wrapper">
         <div class="container">
-            <a href="/" class="brand-logo">{{::vm.siteName}}</a>
-            <a href="#" data-activates="mobile-demo" data-sidenav="left" class="button-collapse"><i class="material-icons">menu</i></a>
+            <a href="/" class="brand-logo">{{::qdNavbar.siteName}}</a>
+            <a href="#" data-activates="mobile-sidebar" data-sidenav="left" class="button-collapse" data-closeonclick="true"><i class="material-icons">menu</i></a>
         
             <ul class="right hide-on-med-and-down">
-                <li><a href="/create">Create Account</a></li>
+                <li><a href="/create-account">Create Account</a></li>
                 <li><a href="/login">Login</a></li>
             </ul>
             
-            <ul class="side-nav" id="mobile-demo">
-                <li><a href="/create">Create Account</a></li>
+            <ul class="side-nav" id="mobile-sidebar">
+                <li><a href="/create-account">Create Account</a></li>
                 <li><a href="/login">Login</a></li>
             </ul>
         </div>

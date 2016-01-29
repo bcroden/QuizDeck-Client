@@ -6,10 +6,10 @@
         .config(config);
     
     function config($routeProvider) {
-        $routeProvider.when('/', {
-            controller: 'homeController',
+        $routeProvider.when('/create-account', {
+            controller: 'createAccountController',
             controllerAs: 'ctrl',
-            templateUrl: 'app/routes/home/home.html'
+            templateUrl: 'app/routes/create-account/create-account.html'
         });
     }
 })();
