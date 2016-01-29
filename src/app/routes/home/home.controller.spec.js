@@ -3,7 +3,7 @@
 ngDescribe({
     name: 'Home Page',
     module: 'app',
-    element: '<div ng-controller="homeController as home"></div>',
+    element: '<div ng-controller="homeController as ctrl"></div>',
     inject: ['$location'],
     tests: function (deps) {
         beforeEach(function() {
