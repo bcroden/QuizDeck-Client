@@ -1,8 +1,10 @@
 {
     "local": {
-        "exampleEnvVar": "local"
+        "exampleEnvVar": "local",
+        "serverUrl": ""
     },
     "prod": {
-        "exampleEnvVar": "prod"
+        "exampleEnvVar": "prod",
+        "serverUrl": ""
     }
 }

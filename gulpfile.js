@@ -30,12 +30,26 @@ var Server          = require('karma').Server;
 var out = './public/';
 var src = './src/';
 var tmp = './.tmp/';
+var lib = './lib/';
 
 var env = 'prod';
 
 gulp.task('clean', function() {
     del.sync(out);
     del.sync(tmp);
+});
+
+gulp.task('vendor', function() {
+    return gulp
+        .src([
+            lib + '/jquery/dist/jquery.min.js',
+            lib + '/materialize/dist/js/materialize.min.js',
+            lib + '/angular/angular.min.js',
+            lib + '/angular-route/angular-route.min.js',
+            lib + '/angular-materialize/src/angular-materialize.js'
+        ])
+        .pipe(concat('vendor.min.js'))
+        .pipe(gulp.dest(out));
 });
 
 gulp.task('angular:config', function() {
@@ -110,7 +124,7 @@ gulp.task('sass', function() {
 });
 
 gulp.task('build', function() {
-    runSequence('clean', ['js', 'html', 'sass']);
+    runSequence('clean', ['vendor', 'js', 'html', 'sass']);
 });
 
 gulp.task('test', ['build'], function() {

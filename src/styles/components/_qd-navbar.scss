@@ -1,3 +1,11 @@
 .qd-navbar {
-    
+    margin-bottom: 100px;
+    .side-nav {
+        li, a {
+            transition: background-color 0s;
+        }
+        a:hover {
+            background-color: #ddd;
+        }
+    }
 }
