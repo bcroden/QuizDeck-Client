@@ -9,12 +9,7 @@ module.exports = function(config) {
         },
         files: [
             './polyfills.js',
-            './lib/jquery/dist/jquery.min.js',
-            './lib/materialize/dist/js/materialize.js',
-            
-            './lib/angular/angular.js',
-            './lib/angular-route/angular-route.min.js',
-            './lib/angular-materialize/src/angular-materialize.js',
+            './public/vendor.min.js',
 
             './node_modules/angular-mocks/angular-mocks.js',
             './node_modules/ng-describe/dist/ng-describe.js',
