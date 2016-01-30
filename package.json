@@ -8,7 +8,7 @@
     "postinstall": "bower install && gulp build",
     "serve": "gulp build && node server.js",
     "test": "gulp test",
-    "typeings": "tsd install"
+    "typings": "tsd install"
   },
   "repository": {
     "type": "git",
