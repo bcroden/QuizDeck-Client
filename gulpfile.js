@@ -1,31 +1,20 @@
 'use strict';
 
+console.log('Starting Gulp...');
+
 // Node APIs
-var exec            = require('child_process').exec;
-var path            = require('path');
+var exec         = require('child_process').exec;
+var path         = require('path');
 
 // Node Modules
-var gulp            = require('gulp');
+var gulp         = require('gulp');
+var $            = require('gulp-load-plugins')({lazy: false});
 
-var ngTemplatecache = require('gulp-angular-templatecache');
-var concat          = require('gulp-concat');
-var cssnano         = require('gulp-cssnano');
-var htmlmin         = require('gulp-htmlmin');
-var inject          = require('gulp-inject');
-var ngAnnotate      = require('gulp-ng-annotate');
-var ngConfig        = require('gulp-ng-config');
-var postcss         = require('gulp-postcss');
-var rename          = require('gulp-rename');
-var sass            = require('gulp-sass');
-var sourcemaps      = require('gulp-sourcemaps');
-var uglify          = require('gulp-uglify');
-var watch           = require('gulp-watch');
-
-var autoprefixer    = require('autoprefixer');
-var browserSync     = require('browser-sync');
-var del             = require('del');
-var runSequence     = require('run-sequence');
-var Server          = require('karma').Server;
+var autoprefixer = require('autoprefixer');
+var browserSync  = require('browser-sync');
+var del          = require('del');
+var runSequence  = require('run-sequence');
+var Server       = require('karma').Server;
 
 var out = './public/';
 var src = './src/';
@@ -48,18 +37,18 @@ gulp.task('vendor', function() {
             lib + '/angular-route/angular-route.min.js',
             lib + '/angular-materialize/src/angular-materialize.js'
         ])
-        .pipe(concat('vendor.min.js'))
+        .pipe($.concat('vendor.min.js'))
         .pipe(gulp.dest(out));
 });
 
 gulp.task('angular:config', function() {
     return gulp
         .src(src + '**/app.config.json')
-        .pipe(ngConfig('app.config', {
+        .pipe($.ngConfig('app.config', {
             environment: env,
             wrap: true
         }))
-        .pipe(rename('config.module.js'))
+        .pipe($.rename('config.module.js'))
         .pipe(gulp.dest(tmp));
 });
 
@@ -69,10 +58,10 @@ gulp.task('angular:template', function() {
             src + '**/*.html',
             '!' + src + 'index.html'
         ])
-        .pipe(htmlmin({
+        .pipe($.htmlmin({
             collapseWhitespace: true
         }))
-        .pipe(ngTemplatecache('templates.module.js', {
+        .pipe($.angularTemplatecache('templates.module.js', {
             module: 'app.templates',
             moduleSystem: 'IIFE',
             standalone: true
@@ -91,18 +80,18 @@ gulp.task('js', [
             src + '**/*.module.js',
             src + '**/!(*.spec).js'
         ])
-        .pipe(sourcemaps.init())
-            .pipe(ngAnnotate())
-            .pipe(concat('app.min.js'))
-            .pipe(uglify())
-        .pipe(sourcemaps.write('.'))
+        .pipe($.sourcemaps.init())
+            .pipe($.ngAnnotate())
+            .pipe($.concat('app.min.js'))
+            .pipe($.uglify())
+        .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest(out));
 });
 
 gulp.task('html', function() {
    return gulp
        .src(src + 'index.html')
-       .pipe(htmlmin({
+       .pipe($.htmlmin({
             collapseWhitespace: true
         }))
        .pipe(gulp.dest(out));
@@ -112,14 +101,14 @@ gulp.task('sass', function() {
     return gulp
         .src(src + '**/*.s@(a|c)ss')
         .pipe(injectSass(gulp.src(src + '**/_*.s@(a|c)ss')))
-        .pipe(sourcemaps.init())
-            .pipe(sass().on('error', function() {}))
-            .pipe(postcss([
+        .pipe($.sourcemaps.init())
+            .pipe($.sass().on('error', function() {}))
+            .pipe($.postcss([
                 autoprefixer({browsers: ['last 2 versions']}),
             ]))
-            .pipe(concat('app.min.css'))
-            .pipe(cssnano())
-        .pipe(sourcemaps.write('.'))
+            .pipe($.concat('app.min.css'))
+            .pipe($.cssnano())
+        .pipe($.sourcemaps.write('.'))
         .pipe(gulp.dest(out));
 });
 
@@ -154,17 +143,17 @@ gulp.task('browser-sync', ['server'], function() {
 });
 
 gulp.task('watch', function() {
-    watch([
+    $.watch([
         src + '**/*.html',
         src + '**/*.js',
         src + '**/*.json'
     ], function() {
         gulp.start('js');
     });
-    watch(src + '**/*.html', function() {
+    $.watch(src + '**/*.html', function() {
         gulp.start('html');
     });
-    watch(src + '**/*.s@(a|c)ss', function() {
+    $.watch(src + '**/*.s@(a|c)ss', function() {
         gulp.start('sass');
     });
 });
@@ -186,7 +175,7 @@ function karma(singleRun) {
 }
 
 function injectSass(src) {
-    return inject(src, {
+    return $.inject(src, {
         starttag: '/* inject:sass */',
         endtag: '/* endinject */',
         transform: function(filepath, file, index, length, targetFile) {
