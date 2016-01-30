@@ -10,6 +10,11 @@ ngDescribe({
             spyOn(deps.$location, 'path');
         });
         
+        it('controller is defined', function() {
+            var ctrl = deps.element.controller();
+            expect(ctrl).toBeDefined();
+        });
+        
         it('allows you to search for quizzes', function() {
             var ctrl = deps.element.controller();
             
