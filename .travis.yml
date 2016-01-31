@@ -1,8 +1,10 @@
 language: node_js
 node_js:
 - '4.1'
-before_script:
-- npm install -g gulp
+cache:
+  directories:
+    - node_modules
+    - lib
 after_success:
 - cat ./coverage/lcov/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:

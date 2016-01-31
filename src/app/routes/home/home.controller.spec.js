@@ -3,11 +3,16 @@
 ngDescribe({
     name: 'Home Page',
     module: 'app',
-    element: '<div ng-controller="homeController as home"></div>',
+    element: '<div ng-controller="homeController as ctrl"></div>',
     inject: ['$location'],
     tests: function (deps) {
         beforeEach(function() {
             spyOn(deps.$location, 'path');
+        });
+        
+        it('controller is defined', function() {
+            var ctrl = deps.element.controller();
+            expect(ctrl).toBeDefined();
         });
         
         it('allows you to search for quizzes', function() {

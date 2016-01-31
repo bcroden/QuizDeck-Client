@@ -74,7 +74,7 @@ ngDescribe({
             });
         });
         
-        describe('_getJWTSection()', function() {
+        describe('getJWTSection()', function() {
             it('throws error if a number other than 0 or 1 is used', function() {
                 expect(function(){
                     authService._getJWTSection(-1);
@@ -86,7 +86,7 @@ ngDescribe({
             });
         });
         
-        describe('_url_base64_decode()', function() {
+        describe('url_base64_decode()', function() {
             it('decodes a base64 url encoded string', function() {
                 expect(authService._url_base64_decode('dGVzdA')).toBe('test');
                 expect(authService._url_base64_decode('dGVzdDE=')).toBe('test1');
