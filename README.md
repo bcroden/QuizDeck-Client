@@ -1,9 +1,8 @@
 # QuizDeck-Client
 
-[![Join the chat at https://gitter.im/bcroden/QuizDeck-Client](https://badges.gitter.im/bcroden/QuizDeck-Client.svg)](https://gitter.im/bcroden/QuizDeck-Client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
-
 [![Build Status](https://travis-ci.org/bcroden/QuizDeck-Client.svg?branch=master)](https://travis-ci.org/bcroden/QuizDeck-Client)
 [![Coverage Status](https://coveralls.io/repos/github/bcroden/QuizDeck-Client/badge.svg?branch=master)](https://coveralls.io/github/bcroden/QuizDeck-Client)
+[![Join the chat at https://gitter.im/bcroden/QuizDeck-Client](https://badges.gitter.im/bcroden/QuizDeck-Client.svg)](https://gitter.im/bcroden/QuizDeck-Client?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 The client for QuizDeck
 
