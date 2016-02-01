@@ -135,7 +135,7 @@ gulp.task('browser-sync', ['server'], function() {
     browserSync.create().init(null, {
 		proxy: "http://localhost:8080",
         files: ["public/**/*"],
-        open: false,
+        browser:"google chrome",
         port: 8081,
         online: true,
         notify: false
