@@ -31,6 +31,7 @@ gulp.task('clean', function() {
 gulp.task('vendor', function() {
     return gulp
         .src([
+            lib + '/js-xlsx/dist/xlsx.core.min.js',
             lib + '/jquery/dist/jquery.min.js',
             lib + '/materialize/dist/js/materialize.min.js',
             lib + '/angular/angular.min.js',
