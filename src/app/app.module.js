@@ -6,6 +6,7 @@
             'app.config',
             'app.templates',
             'ngRoute',
-            'ui.materialize'
+            'ui.materialize',
+            'ngFileSaver'
         ]);
 })();
