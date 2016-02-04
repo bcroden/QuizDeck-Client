@@ -6,7 +6,6 @@ cache:
     - node_modules
     - lib
 after_success:
-- PRINTENV COVERALLS_SERVICE_NAME
 - cat ./coverage/lcov/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku
