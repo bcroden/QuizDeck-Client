@@ -76,5 +76,9 @@
             for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
             return buf;
         }
+        
+        // Private functions
+        this._datenum = datenum;
+        this._sheet_from_array_of_arrays = sheet_from_array_of_arrays;
     }
 })();
