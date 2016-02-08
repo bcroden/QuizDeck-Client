@@ -11,8 +11,8 @@
         //////////////
         
         function accountSearch(){
-            if(this.accountSearch)
-                $location.path('/account/' + this.accountSearch);
+            if(this.accountId)
+                $location.path('/account/' + this.accountId);
         }
     }
 })();
