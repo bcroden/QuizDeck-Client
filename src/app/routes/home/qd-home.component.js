@@ -1,11 +1,15 @@
 (function() {
     'use strict';
-
+    
     angular
         .module('app')
-        .controller('homeController', HomeController);
-
-    function HomeController($location) {
+        .component('qdHome', {
+            controller: Controller,
+            templateUrl: 'app/routes/home/qd-home.html'
+        });
+    
+    /* @ngInject */
+    function Controller($location) {
         this.quizSearch = quizSearch;
         
         //////////////
