@@ -5,12 +5,12 @@
         .module('app')
         .config(config);
     
-    function config($locationProvider, $routeProvider) {
+    function config($locationProvider, routeAuthService) {
         $locationProvider.html5Mode({
             enabled: true,
             requireBase: false
         });
         
-        $routeProvider.otherwise('/');
+        routeAuthService.init();
     }
 })();
