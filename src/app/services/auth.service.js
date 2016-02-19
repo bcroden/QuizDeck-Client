@@ -5,22 +5,22 @@
         .module('app')
         .service('authService', AuthService);
     
-    function AuthService($window, $http, serverUrl) {
+    function AuthService($window, $http, serverUrl, $q) {
         this.getAuthToken = getAuthToken;
         this.getHeader = getJWTSection(0);
         this.getPayload = getJWTSection(1);
         
         this.isAuthenticated = isAuthenticated;
+        this.hasRole = hasRole;
         
-        //TODO: Add methods for account creation and login
-        // this.createAccount = createAccount;
-        // this.login = login;
+        this.createAccount = createAccount;
+        this.login = login;
         this.logout = logout;
         
         ///////////////
         
-        var createAccountEndpoint = serverUrl + ''; //TODO: Determine account creation endpoint
-        var loginEndpoint = serverUrl + ''; //TODO: Determine login endpoint
+        var createAccountEndpoint = serverUrl + '/rest/nonsecure/createAccount';
+        var loginEndpoint = serverUrl + '/rest/nonsecure/login';
         
         function getAuthToken() {
             if($window.sessionStorage.authToken)
@@ -32,8 +32,34 @@
             return getAuthToken() !== null;
         }
         
+        function hasRole(role) {
+            return this.getPayload().role === role;
+        }
+        
+        function createAccount(data) {
+            return fetchNewAuthToken(createAccountEndpoint, data);
+        }
+        
+        function login(data) {
+            return fetchNewAuthToken(loginEndpoint, data);
+        }
+        
         function logout() {
             delete $window.sessionStorage.authToken;
+        }
+        
+        ////////////////
+        
+        function fetchNewAuthToken(endpoint, data) {
+            return $http
+                .post(endpoint, data)
+                .then(function(response) {
+                    $window.sessionStorage.authToken = response.data.token;
+                    return $q.when(true);
+                })
+                .catch(function() {
+                    return $q.reject(false);
+                });
         }
         
         function getJWTSection(section) {
