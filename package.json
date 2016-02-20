@@ -24,6 +24,7 @@
   },
   "homepage": "https://github.com/bcroden/QuizDeck-Client#readme",
   "dependencies": {
+    "compression": "^1.6.1",
     "express": "^4.13.3"
   },
   "devDependencies": {
