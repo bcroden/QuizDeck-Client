@@ -75,8 +75,7 @@ gulp.task('js', [
     ], function() {
     return gulp
         .src([
-            tmp + 'config.module.js',
-            tmp + 'templates.module.js',
+            tmp + '*.module.js',
             src + '**/*.module.js',
             src + '**/!(*.spec).js'
         ])

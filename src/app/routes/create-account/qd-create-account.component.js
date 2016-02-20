@@ -1,11 +1,15 @@
 (function() {
     'use strict';
-
+    
     angular
         .module('app')
-        .controller('createAccountController', CreateAccountController);
-
-    function CreateAccountController(authService, $location) {
+        .component('qdCreateAccount', {
+            controller: Controller,
+            templateUrl: 'app/routes/create-account/qd-create-account.html'
+        });
+    
+    /* @ngInject */
+    function Controller(authService, $location) {
         this.createAccount = createAccount;
         
         //////////////

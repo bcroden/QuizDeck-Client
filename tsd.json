@@ -6,19 +6,31 @@
   "bundle": "typings/tsd.d.ts",
   "installed": {
     "angularjs/angular.d.ts": {
-      "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
     },
     "jquery/jquery.d.ts": {
-      "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
     },
     "jasmine/jasmine.d.ts": {
       "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
     },
     "node/node.d.ts": {
-      "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
     },
     "angularjs/angular-route.d.ts": {
       "commit": "c2b4ebb74caeb379c3691646b04cb3db26b53f95"
+    },
+    "angularjs/angular-mocks.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "express/express.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "serve-static/serve-static.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
+    },
+    "mime/mime.d.ts": {
+      "commit": "95b7178e0ef33b4b88327676418b4cc3ad61df0f"
     }
   }
 }
