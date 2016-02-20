@@ -1,7 +1,11 @@
-var express = require('express');
-var app     = express();
+var express       = require('express');
+var compression   = require('compression')
+
+var app         = express();
 
 app.set('port', (process.env.PORT || 8079));
+
+app.use(compression());
 
 app.use(express.static(__dirname + '/public'));
 app.use('/lib', express.static(__dirname + '/lib'));
