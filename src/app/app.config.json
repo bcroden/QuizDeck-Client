@@ -1,8 +1,8 @@
 {
     "local": {
-        "serverUrl": "http://localhost:8080"
+        "serverUrl": "//localhost:8080"
     },
     "prod": {
-        "serverUrl": "http://quizdeckserver.herokuapp.com"
+        "serverUrl": "//quizdeckserver.herokuapp.com"
     }
 }
