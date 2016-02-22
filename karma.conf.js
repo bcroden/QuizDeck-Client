@@ -8,14 +8,12 @@ module.exports = function(config) {
             './src/**/!(*.spec|config.module|templates.module).js': ['coverage']
         },
         files: [
-            './polyfills.js',
             './public/vendor.min.js',
 
             './node_modules/angular-mocks/angular-mocks.js',
             './node_modules/ng-describe/dist/ng-describe.js',
 
-            './.tmp/**/config.module.js',
-            './.tmp/**/templates.module.js',
+            './.tmp/**/*.module.js',
             './src/**/*.module.js',
             './src/**/!(*.spec).js',
             './src/**/*.spec.js'

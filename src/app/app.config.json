@@ -1,10 +1,8 @@
 {
     "local": {
-        "exampleEnvVar": "local",
-        "serverUrl": ""
+        "serverUrl": "http://localhost:8080"
     },
     "prod": {
-        "exampleEnvVar": "prod",
-        "serverUrl": ""
+        "serverUrl": "http://quizdeckserver.herokuapp.com"
     }
 }
