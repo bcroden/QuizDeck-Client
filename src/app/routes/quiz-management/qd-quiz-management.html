@@ -1,0 +1,22 @@
+<div class="home">
+    <div class="row">
+        <div class="col s12 offset-m3 m6 offset-l4 l4 right-align">
+            <div class="center-align">
+            <h4>Quizes</h4>
+                <div class="left-align">
+                    <ul class="collapsible" data-collapsible="accordion">
+                    <li ng-repeat="x in $ctrl.getQuizes()">
+                        <div class="collapsible-header" class="left-align"> {{ x }} </div>
+                        <div class="collapsible-body"> Quizes go in here </div>
+                    </li>
+                    </ul>
+                </div>
+                <div input-field>
+                    <input type="text" ng-model="$ctrl.quizLabel" qd-focus>
+                    <label>Search By Quiz Label</label>
+                </div>
+                <div class="right-align">
+                     <a href="/" class="waves-effect btn-flat">Cancel</a>
+                     <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.labelSearch()">Search</button>
+                </div>
+            </div>
