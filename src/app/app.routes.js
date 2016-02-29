@@ -17,6 +17,16 @@
                 authRole: 'User',
                 template: '<qd-dashboard/>'
             })
+            .when('/quiz-management', {
+                authRole: 'User',
+                template: '<qd-quiz-management/>'
+            })
+            .when('/login', {
+                template: '<qd-login/>'
+            })
+            .when('/subscriber-management',{
+                template: '<qd-subscriber-management/>'
+            })
             .otherwise('/');
     }
 })();
