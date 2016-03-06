@@ -5,10 +5,10 @@
             <h4>Quizes</h4>
                 <div class="left-align">
                     <ul class="collapsible" data-collapsible="accordion">
-                    <li ng-repeat="x in $ctrl.getQuizes()">
+                    <!--<li ng-repeat="x in $ctrl.getQuizes()">
                         <div class="collapsible-header" class="left-align"> {{ x }} </div>
                         <div class="collapsible-body"> Quizes go in here </div>
-                    </li>
+                    </li>-->
                     </ul>
                 </div>
                 <div input-field>
@@ -17,6 +17,6 @@
                 </div>
                 <div class="right-align">
                      <a href="/" class="waves-effect btn-flat">Cancel</a>
-                     <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.labelSearch()">Search</button>
+                     <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.getQuizes()">Search</button>
                 </div>
             </div>
