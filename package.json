@@ -28,7 +28,7 @@
     "express": "^4.13.3"
   },
   "devDependencies": {
-    "angular-mocks": "^1.5.0",
+    "angular-mocks": "1.5.0",
     "autoprefixer": "^6.3.1",
     "bower": "^1.7.2",
     "browser-sync": "^2.11.1",
@@ -57,7 +57,7 @@
     "karma-phantomjs-launcher": "^1.0.0",
     "karma-spec-reporter": "0.0.24",
     "ng-describe": "^1.6.0",
-    "phantomjs-prebuilt": "^2.1.4",
+    "phantomjs-prebuilt": "^2.1.7",
     "run-sequence": "^1.1.5",
     "tsd": "^0.6.5"
   }
