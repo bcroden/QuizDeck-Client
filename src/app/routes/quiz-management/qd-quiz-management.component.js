@@ -17,7 +17,7 @@
         
          var dataFromServer = {};
          var listOfData = {};
-         $http.get('http://quizdeckserver.herokuapp.com/rest/secure/quiz/searchBySelf').then(function(responce) {
+         $http.get('https://quizdeckserver.herokuapp.com/rest/secure/quiz/searchBySelf').then(function(responce) {
              dataFromServer = responce.data;
              dataFromServer.forEach(function(quiz){         
                 quiz.categories.forEach(function(category){
