@@ -1,22 +1,31 @@
+
 <div class="home">
     <div class="row">
-        <div class="col s12 offset-m3 m6 offset-l4 l4 right-align">
+        <div class="col s12 offset-m3 m6 offset-l0 l0 center-align">
             <div class="center-align">
-            <h4>Quizes</h4>
+            <h4>My Quizzes</h4>
+            <div input-field>
+                <input type="text" ng-model="$ctrl.searchCriteria" qd-focus qd-enter="$ctrl.searchWithFilter()">
+                <label>Search By Quiz Label</label>
+            </div>
+            <div class="right-align">
+            <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.searchWithFilter()"><i class="material-icons right">search</i>Search</button>
+            </div>
                 <div class="left-align">
                     <ul class="collapsible" data-collapsible="accordion">
-                    <li ng-repeat="x in $ctrl.getQuizes()">
-                        <div class="collapsible-header" class="left-align"> {{ x }} </div>
-                        <div class="collapsible-body"> Quizes go in here </div>
+                    <li ng-repeat="(key, values) in $ctrl.getFilteredQuizes()">
+                        <div class="collapsible-header" class="left-align"> {{key}} </div>
+                        <div class="collapsible-body"> 
+                            <ul>               
+                             <li ng-repeat="value in values track by $index">
+                                 <a ng-href="/edit-quiz/<value.id>" class="collection-item"> {{value.title}} </a>
+                                 <ul
+                                    class="chip" ng-repeat="temp in value.labels track by $index"> {{temp}}
+                                 </ul>
+                             </li>
+                            </ul>
+                       </div>
                     </li>
                     </ul>
-                </div>
-                <div input-field>
-                    <input type="text" ng-model="$ctrl.quizLabel" qd-focus>
-                    <label>Search By Quiz Label</label>
-                </div>
-                <div class="right-align">
-                     <a href="/" class="waves-effect btn-flat">Cancel</a>
-                     <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.labelSearch()">Search</button>
                 </div>
             </div>
