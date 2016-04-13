@@ -10,6 +10,14 @@
             .when('/', {
                 template: '<qd-home/>'
             })
+            .when('/edit-quiz/:id?', {
+                authRole: 'User',
+                template: '<qd-create-quiz quiz="$resolve.quiz" categories="$resolve.categories"/>',
+                resolve: {
+                    quiz: getQuiz,
+                    categories: getCategories
+                }
+            })
             .when('/create-account', {
                 template: '<qd-create-account/>'
             })
@@ -28,5 +36,17 @@
                 template: '<qd-subscriber-management/>'
             })
             .otherwise('/');
+        
+        /* @ngInject */
+        function getQuiz(quizService, $route) {
+            var id = $route.current.params.id;
+            if(id)
+                return quizService.getQuiz(id);
+        }
+        
+        /* @ngInject */
+        function getCategories($q) {
+            return $q.when(['Geography']);
+        }
     }
 })();

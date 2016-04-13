@@ -1,0 +1,8 @@
+<div class="badges-list">
+    <div class="chip" ng-repeat="chip in $ctrl.chips">
+        {{chip.text}}<i class="material-icons" ng-click="$ctrl.delete($index)">close</i>
+    </div>
+    <!--<div class="chip">
+       a <i class="material-icons">add</i>
+    </div>-->
+</div>
