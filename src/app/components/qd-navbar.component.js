@@ -9,7 +9,10 @@
         });
     
     /* @ngInject */
-    function Controller() {
+    function Controller(authService) {
         this.siteName = 'QuizDeck';
+        
+        this.logout = authService.logout;
+        this.isAuthenticated = authService.isAuthenticated;
     }
 })();
