@@ -6,7 +6,7 @@
         
             <ul class="right hide-on-med-and-down">
                 <li ng-if="$ctrl.isAuthenticated()"><a href="/subscriber-management">Manage Subscriptions</a></li>
-                <li ng-if="$ctrl.isAuthenticated()"><a href="/quiz-management">Manage Quizes</a></li>
+                <li ng-if="$ctrl.isAuthenticated()"><a href="/quiz-management">My Quizes</a></li>
                 <li ng-if="$ctrl.isAuthenticated()"><a href="/" ng-click="$ctrl.logout()">Logout</a></li>
                 <li ng-if="!$ctrl.isAuthenticated()"><a href="/login">Login</a></li>
                 <li ng-if="!$ctrl.isAuthenticated()"><a href="/create-account">Create Account</a></li>
@@ -14,7 +14,7 @@
             
             <ul class="side-nav" id="mobile-sidebar">
                 <li ng-if="$ctrl.isAuthenticated()"><a href="/subscriber-management">Manage Subscriptions</a></li>
-                <li ng-if="$ctrl.isAuthenticated()"><a href="/quiz-management">Manage Quizes</a></li>
+                <li ng-if="$ctrl.isAuthenticated()"><a href="/quiz-management">My Quizes</a></li>
                 <li ng-if="$ctrl.isAuthenticated()"><a href="/" ng-click="$ctrl.logout()">Logout</a></li>
                 <li ng-if="!$ctrl.isAuthenticated()"><a href="/login">Login</a></li>
                 <li ng-if="!$ctrl.isAuthenticated()"><a href="/create-account">Create Account</a></li>
