@@ -3,19 +3,46 @@
         <div class="col s12 offset-m3 m6 offset-14 14 right-align">
             <div class="center-align">
                 <h4>Login</h4>
-             <div class="right-align">
-            <div class="right-align">
-            <div input-field>
-                <input type="text" ng-model="$ctrl.username" qd-focus>
-                <label>Username</label>
+                <div class="right-align" ng-show="!$ctrl.waiting">
+                    <div class="right-align">
+                        <div class="right-align">
+                            <div class="row">
+                                <div input-field>
+                                    <input type="text" ng-model="$ctrl.username" qd-enter="$ctrl.login()" ng-class="{invalid: $ctrl.errored}">
+                                    <label>Username</label>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div input-field>
+                                    <input type="password" ng-model="$ctrl.password" qd-enter="$ctrl.login()" ng-class="{invalid: $ctrl.errored}">
+                                    <label data-error="Incorrect username or password">Password</label>
+                                </div>
+                            </div>
+                            
+                            <div class="row">
+                                <a href="/" class="waves-effect btn-flat">Cancel</a>
+                                <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.login()">Login</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div ng-if="$ctrl.waiting">
+                    <br/>
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div input-field>
-                <input type="password" ng-model="$ctrl.password">
-                <label>Password</label>
-            </div>
-     <a href="/" class="waves-effect btn-flat">Cancel</a>
-     <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.login()">Login</button>
-            </div>
-       </div>
-   </div>
+        </div>
+    </div>
 </div>
