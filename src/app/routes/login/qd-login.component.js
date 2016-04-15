@@ -14,12 +14,16 @@
 
         vm.login = login;
 
+        ////////////////
+
         function login() {
             if(vm.waiting)
                 return;
             
             vm.waiting = true;
-            authService.login({
+            
+            authService
+                .login({
                     username: vm.username,
                     password: vm.password
                 })

@@ -11,36 +11,34 @@
         vm.getQuiz = getQuiz;
         vm.createQuiz = createQuiz;
         vm.deleteQuiz = deleteQuiz;
+        vm.editQuiz = editQuiz;
         
         ////////////////
         
         function getQuiz(id) {
-            // TODO: Fix this when Cade adds an endpoint to get a single quiz...
             return $http
-                .get(serverUrl + '/rest/secure/quiz/searchBySelf')
+                .get(serverUrl + '/rest/secure/quiz/searchById/' + id)
                 .then(function(response) {
-                    var quizzes = response.data || [];
-                    
-                    var quiz = quizzes.filter(function(quiz) {
-                        return quiz.id === id;
-                    })[0];
-                    
-                    return serverQuizToClientQuiz(quiz);
+                    return serverQuizToClientQuiz(response.data);
                 });
         }
         
-        function createQuiz(clientQuiz) {
+        function editQuiz(id, clientQuiz) {
+            var serverQuiz = clientQuizToServerQuiz(clientQuiz);
+            serverQuiz.id = id;
             
+            return $http
+                .put(serverUrl + '/rest/secure/quiz/quizEdit', serverQuiz)
+        }
+        
+        function createQuiz(clientQuiz) {
             return $http
                 .post(serverUrl + '/rest/secure/quiz/quizsubmission', clientQuizToServerQuiz(clientQuiz))
         }
         
-        // TODO: The delete endpoint seems to be broken...
         function deleteQuiz(id) {
             return $http
-                .delete(serverUrl + '/rest/secure/quiz/quizDelete', {
-                    id: id
-                });
+                .delete(serverUrl + '/rest/secure/quiz/quizDelete/' + id);
         }
         
         function clientQuizToServerQuiz(quiz) {
@@ -94,7 +92,7 @@
             }
             
             return {
-                categories: quiz.categories || [],
+                categories: [quiz.category],
                 labels: convertLabels(quiz.labels) || [],
                 owner: authService.getPayload().user,
                 publicAvailable: quiz.publicAvailable || false,
@@ -114,6 +112,7 @@
             };
             
             clientQuiz.title = quiz.title;
+            console.log(quiz);
             clientQuiz.category = quiz.categories[0];
             clientQuiz.labels = quiz.labels;
             

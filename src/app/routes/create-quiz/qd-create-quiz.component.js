@@ -13,7 +13,7 @@
         });
     
     /* @ngInject */
-    function Controller(quizService, $routeParams) {
+    function Controller(quizService, $routeParams, $location) {
         var vm = this;
         
         /**
@@ -36,9 +36,10 @@
                     ]
                 }]
             };
-        }
+        };
         
         vm.addQuestion = function() {
+            console.log(vm.quiz);
             vm.quiz.questions.push({
                 text: '',
                 answers: [{
@@ -64,14 +65,24 @@
         }
         
         vm.saveQuiz = function() {
-            console.log(vm.quiz);
-            quizService.createQuiz(vm.quiz);
+            // If id is present, edit existing quiz. Else create new quiz.
+            var id = $routeParams.id;
+            var promise = id ? quizService.editQuiz(id, vm.quiz) : quizService.createQuiz(vm.quiz);
+            
+            promise
+                .then(function() {
+                    $location.path('/quiz-management');
+                });
         }
         
         vm.deleteQuiz = function() {
             var id = $routeParams.id;
             
-            quizService.deleteQuiz(id);
+            quizService
+                .deleteQuiz(id)
+                .then(function() {
+                    $location.path('/quiz-management');
+                });
         }
     }
 })();

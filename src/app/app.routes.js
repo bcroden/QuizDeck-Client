@@ -35,6 +35,12 @@
             .when('/subscriber-management',{
                 template: '<qd-subscriber-management/>'
             })
+            .when('/run-quiz/:id', {
+                template: '<run-quiz quiz="$resolve.quiz"/>',
+                resolve: {
+                    quiz: getQuiz
+                }
+            })
             .otherwise('/');
         
         /* @ngInject */
