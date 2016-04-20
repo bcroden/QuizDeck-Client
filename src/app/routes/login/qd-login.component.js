@@ -28,7 +28,7 @@
                     password: vm.password
                 })
                 .then(function() {
-                    $location.path('/dashboard');
+                    $location.path('/');
                 })
                 .catch(function(){
                     vm.waiting = false;

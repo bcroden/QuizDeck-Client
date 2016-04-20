@@ -21,10 +21,6 @@
             .when('/create-account', {
                 template: '<qd-create-account/>'
             })
-            .when('/dashboard', {
-                authRole: 'User',
-                template: '<qd-dashboard/>'
-            })
             .when('/quiz-management', {
                 authRole: 'User',
                 template: '<qd-quiz-management/>'

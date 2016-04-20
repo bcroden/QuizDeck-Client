@@ -22,7 +22,7 @@
                     email: this.email
                 })
                 .then(function() {
-                    $location.path('/dashboard');
+                    $location.path('/');
                 })
                 .catch(function() {
                     // Do stuff

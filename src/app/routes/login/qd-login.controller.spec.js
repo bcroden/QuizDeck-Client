@@ -31,7 +31,7 @@ describe('Login Page', function() {
     });
 
     describe('login()', function() {
-        it('redirects to /dashboard on success', function() {
+        it('redirects to / on success', function() {
             spyOn(authService, 'login').and.callFake(function() {
                 return $q.when(true);
             });
@@ -43,10 +43,10 @@ describe('Login Page', function() {
 
             $rootScope.$apply();
 
-            expect($location.path).toHaveBeenCalledWith('/dashboard');
+            expect($location.path).toHaveBeenCalledWith('/');
         });
 
-        it('does not redirect to /dashboard on failure', function() {
+        it('does not redirect to / on failure', function() {
             spyOn(authService, 'login').and.callFake(function() {
                 return $q.reject(false);
             });
