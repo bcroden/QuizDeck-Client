@@ -10,23 +10,30 @@
 
     /* @ngInject */
     function Controller(authService, $location) {
+        var vm = this;
 
-        this.login = login;
+        vm.login = login;
+
+        ////////////////
 
         function login() {
-            authService.login({
-                "username": this.username,
-                "password": this.password
-            })
-            .then(function() {
-                $location.path('/dashboard');
-            })
-            .catch(function(){
-               // Give a unique and personal error to every single person
-               // crafted from various information harvested from their facebook
-               // page into the perfect insult that will destroy thier self-confidence
-               // and render them completely defeated emotionally and socially.
-            });
+            if(vm.waiting)
+                return;
+            
+            vm.waiting = true;
+            
+            authService
+                .login({
+                    username: vm.username,
+                    password: vm.password
+                })
+                .then(function() {
+                    $location.path('/');
+                })
+                .catch(function(){
+                    vm.waiting = false;
+                    vm.errored = true;
+                });
         }
      }
 })();

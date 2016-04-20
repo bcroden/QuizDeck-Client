@@ -1,0 +1,90 @@
+<div class="create-quiz">
+    <div class="row">
+        <div class="col s12 right-align">
+            <div input-field>
+                <input type="text" ng-model="$ctrl.quiz.title">
+                <label>Quiz Title</label>
+            </div>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col s12 m6">
+            <select class="" ng-model="$ctrl.quiz.category" material-select watch>
+                <option value="" disabled selected>Category</option>
+                <option ng-repeat="value in $ctrl.categories">{{value}}</option>
+            </select>
+        </div>
+        <div class="col s12 m6">
+            <badges-list chips="$ctrl.quiz.labels"></badges-list>
+        </div>
+    </div>
+    
+    <div class="row">
+        <div class="col s12 right-align">
+            <ul class="collapsible" data-collapsible="accordion">
+                <li ng-repeat="question in $ctrl.quiz.questions">
+                    
+                    <div class="collapsible-header">
+                        <i class="small material-icons" ng-click="$ctrl.deleteQuestion($index)">delete</i>
+                        <div input-field>
+                            <input type="text" ng-model="question.text" placeholder="Question {{$index+1}}">
+                        </div>
+                    </div>
+                    
+                    <div class="collapsible-body">
+                        <br/>
+                        
+                        <div class="row" ng-repeat="answer in question.answers track by $index">
+                            
+                            <div class="col s1">
+                                
+                                <div class="valign-wrapper delete-wrapper right">
+                                    <!--<a class="btn-flat waves-effect" ng-click="$ctrl.deleteAnswer(question, $index)"><i class="valign center-align small material-icons">delete</i></a>-->
+                                    <i class="valign right-align small material-icons" ng-click="$ctrl.deleteAnswer(question, $index)">delete</i>
+                                </div>
+                                
+                            </div>
+                            
+                            <div class="col s10 left-align">
+                            
+                                <div input-field>
+                                    <input type="text" ng-model="answer.value">
+                                    <label>Answer {{$index+1}}</label>
+                                </div>
+                                
+                                <input type="checkbox" id="dynamicCheckbox{{$parent.$index}}-{{$index}}" ng-model="answer.correct"/>
+                                <label for="dynamicCheckbox{{$parent.$index}}-{{$index}}">Correct</label>
+                                
+                            </div>
+                        </div>
+                        
+                        <div class="row"">
+                            <div class="col s11">
+                                <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.addAnswer(question)">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+                <li>
+                    <div class="collapsible-header add-question-header">
+                        <div class="row">
+                            <div class="col s12 center-align">
+                                <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.addQuestion()">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="collapsible-body"></div>
+                </li>
+            </ul>
+            
+            
+        </div>
+    </div>
+    <div class="row">
+        <div class="col s12 right-align">
+            <a class="btn-flat waves-effect" ng-click="$ctrl.deleteQuiz()">Delete Quiz</a>
+            <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.saveQuiz()">Save<i class="material-icons right">save</i></button>
+        </div>
+    </div>
+</div>

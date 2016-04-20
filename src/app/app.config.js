@@ -13,7 +13,8 @@
         });
     }
     
-    function run(routeAuthService) {
+    function run(routeAuthService, wakeupService) {
         routeAuthService.init();
+        //wakeupService.init();
     }
 })();

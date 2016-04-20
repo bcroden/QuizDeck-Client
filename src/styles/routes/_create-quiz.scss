@@ -1,0 +1,28 @@
+.create-quiz {
+    .select-wrapper {
+        margin-top: 15px;
+    }
+    .delete-wrapper {
+        padding-left: 5px;
+        height: 70px;
+        i {
+            margin-top: 10px;
+            cursor: pointer;
+        }
+    }
+    .collapsible-header {
+        cursor: default !important;
+        .btn {
+            margin-top: 20px;
+        }
+        input {
+            border-bottom: 0px;
+            text-align: center;
+        }
+        .material-icons {
+            position: absolute;
+            cursor: pointer;
+            z-index: 2;
+        }
+    }
+}

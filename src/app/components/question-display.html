@@ -1,0 +1,22 @@
+<div class="question-display">
+    <div class="card">
+        <div class="card-content">
+            <h5>{{$ctrl.question.text}}</h5>
+
+            <div ng-repeat="answer in $ctrl.question.answers">
+                <div class="divider"></div>
+                <div class="answer">{{$index+1}}) {{answer.value}}</div>
+            </div>
+
+            <div class="divider"></div>
+            
+            <br/>
+            
+            <div class="row right-align">
+                <div class="col s12">
+                    <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.nextQuestion()">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

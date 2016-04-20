@@ -31,7 +31,7 @@ describe('Create Account Page', function() {
     });
 
     describe('createAccount()', function() {
-        it('redirects to /dashboard on success', function() {
+        it('redirects to / on success', function() {
             spyOn(authService, 'createAccount').and.callFake(function() {
                 return $q.when(true);
             });
@@ -44,10 +44,10 @@ describe('Create Account Page', function() {
 
             $rootScope.$apply();
 
-            expect($location.path).toHaveBeenCalledWith('/dashboard');
+            expect($location.path).toHaveBeenCalledWith('/');
         });
 
-        it('does not redirect to /dashboard on failure', function() {
+        it('does not redirect to / on failure', function() {
             spyOn(authService, 'createAccount').and.callFake(function() {
                 return $q.reject(false);
             });
