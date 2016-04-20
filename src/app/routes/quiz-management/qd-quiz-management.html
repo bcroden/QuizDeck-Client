@@ -1,6 +1,6 @@
 <div class="home">
     <div class="row">
-        <div class="col s12 offset-m3 m6 offset-l0 l0 center-align">
+        <div class="col s12 center-align">
             <div class="center-align">
                 <h4>My Quizzes</h4>
                 <div input-field>
@@ -16,15 +16,22 @@
                             <div class="collapsible-header" class="left-align"> {{key}} </div>
                             <div class="collapsible-body">
                                 <ul class="collection">
-                                    <li ng-repeat="value in values track by $index">
-                                        <a ng-href="/edit-quiz/{{value.id}}" class="collection-item"> {{value.title}} </a>
-                                        <ul class="chip" ng-repeat="temp in value.labels track by $index"> {{temp}}
-                                        </ul>
+                                    <li class="collection-item" ng-repeat="value in values track by $index">
+                                        <a ng-href="/edit-quiz/{{value.id}}"> {{value.title}} </a>
+                                        <a class="chip" ng-repeat="temp in value.labels track by $index"> {{temp}} </a>
+                                        <a ng-href="/run-quiz/{{value.id}}" class="secondary-content">
+                                            <i class="material-icons">play_circle_outline</i>
+                                        </a>
                                     </li>
                                 </ul>
                             </div>
                         </li>
                     </ul>
+                </div>
+                <div class="fixed-action-btn" style="bottom: 45px; right:24px;">
+                    <a class="btn-floating btn-large blue" href="/edit-quiz">
+                        <i class="large material-icons">add</i>
+                    </a>
                 </div>
             </div>
         </div>
