@@ -10,28 +10,26 @@
          
     /* @ngInject */
     function Controller($location, $http) {
+               var vm = this;
         this.getFilteredQuizes = getFilteredQuizes;
-        this.searchWithFilter = searchWithFilter;
-        
+               vm.searchWithFilter = searchWithFilter;
+
         ////////////////
         
          var dataFromServer = {};
          var listOfData = {};
-         $http.get('https://quizdeckserver.herokuapp.com/rest/secure/quiz/searchBySelf').then(function(responce) {
-             dataFromServer = responce.data;
-             dataFromServer.forEach(function(quiz){         
-                quiz.categories.forEach(function(category){
-                listOfData[category] = listOfData[category] || [];
-                listOfData[category].push(quiz);
-                });
-             });
-          });
          
         function searchWithFilter(){
-            var searchFilter = this.searchCriteria;
+            if(vm.waiting)
+                return;
+                
+                vm.waiting = true;
+            
+            var searchFilter = vm.searchCriteria;
             listOfData = {};
-            $http.get('https://quizdeckserver.herokuapp.com/rest/secure/quiz/searchBySelf').then(function(responce) {
-                 dataFromServer = responce.data;
+            $http.get('https://quizdeckserver.herokuapp.com/rest/secure/quiz/searchBySelf').then(function(response) {
+                vm.waiting = false;
+                 dataFromServer = response.data;
                  dataFromServer.forEach(function(quiz){  
                      quiz.categories.forEach(function(category){
                           listOfData[category] = listOfData[category] || [];
@@ -44,11 +42,15 @@
                           }
                     });
                 });
+            })
+            .catch(function(){
+                vm.waiting = false;
             });
         }
         
         function getFilteredQuizes() { 
             return listOfData;
         }
+        
      }
 })();

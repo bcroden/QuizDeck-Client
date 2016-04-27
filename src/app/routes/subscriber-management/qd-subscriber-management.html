@@ -1,18 +1,48 @@
-<div class="login">
+<div class="subscriberManagement">
     <div class="row">
         <div class="col s12 offset-m3 m6 offset-14 14 right-align">
             <div class="center-align">
                 <h4>Manage Subscriptions</h4>
-             <div class="right-align">
-            <div class="right-align">
-            <div input-field>
-                <input type="text" ng-model="$ctrl.userId" qd-focus>
-                <label>User Id</label>
+              <div class="right-align">
+              <div class="right-align">
+                 <div input-field>
+                    <input type="text" ng-model="$ctrl.userName" qd-focus qd-enter="$ctrl.userSearch()">
+                    <label>Username</label>
+                 </div>
+                 <div>
+                     <a href="/" class="waves-effect btn-flat">Cancel</a>
+                     <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.userSearch()">Search</button>
+                 </div>
+                 <div class="left-align">
+                     <ul class="collection">
+                         <li class="collection-item" ng-repeat="n in $ctrl.getNames() track by $index">
+                             <div>
+                                 {{n}} 
+                                 <a href="" ng-click="$ctrl.onSubscribe(n)" class="secondary-content"><i class="chip">Subscribe</i> </a>
+                             </div>
+                         </li>
+                     </ul>
+                 </div>
+              </div>
+              </div>
+                    <div ng-if="$ctrl.waiting">
+                    <br/>
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-     <a href="/" class="waves-effect btn-flat">Cancel</a>
-     <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.userSearch()">Search</button>
-            </div>
-       </div>
+        </div>
+    </div>
    </div>
-</div>
           
