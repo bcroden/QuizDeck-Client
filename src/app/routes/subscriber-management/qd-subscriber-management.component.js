@@ -18,9 +18,16 @@
         var vm = this;
         this.getNames = getNames;
         
-                vm.userSearch = userSearch;
+        vm.userSearch = userSearch;
         vm.onSubscribe = onSubscribe;
         vm.onUnsubscribe = onUnsubscribe;
+        vm.clearSearch = clearSearch;
+        
+        clearSearch();
+        
+        function clearSearch(){
+            listOfNames = [];
+        }
 
         function getNames(){            
             return listOfNames;
@@ -37,7 +44,6 @@
                 
             vm.waiting = true;
             
-
             if(this.userName){
                $http.get("https://quizdeckserver.herokuapp.com/rest/secure/user/findUser/" + vm.userName).then(function(foundUsers){
                    $http.get('https://quizdeckserver.herokuapp.com/rest/secure/user/getSubscriptions/').then(function(foundSubscriptions){
@@ -47,14 +53,19 @@
                         users = foundUsers.data;
 
                         users.forEach(function(name){  
-                            subscribers.forEach(function(subscribedUser){
-                                if(name.userName === subscribedUser){
-                                    name.subscribed = true;
-                                }else if(name.subscribed != true){
-                                    name.subscribed = false;
-                                }
-                            });
-                            listOfNames.push(name);
+                            if(subscribers.length != 0){ 
+                                subscribers.forEach(function(subscribedUser){
+                                    if(name.userName === subscribedUser){
+                                        name.subscribed = true;
+                                    }else if(name.subscribed != true){
+                                        name.subscribed = false;
+                                    }
+                                });
+                                listOfNames.push(name);
+                            }else{
+                                name.subscribed = false;
+                                listOfNames.push(name);
+                            }
                         });
                         
                    });
