@@ -1,4 +1,4 @@
-<div class="home">
+<div class="quizManagement">
     <div class="row">
         <div class="col s12 center-align">
             <div class="center-align">
@@ -27,6 +27,22 @@
                             </div>
                         </li>
                     </ul>
+                </div>
+                 <div ng-if="$ctrl.waiting">
+                    <br/>
+                    <div class="preloader-wrapper big active">
+                        <div class="spinner-layer spinner-blue-only">
+                            <div class="circle-clipper left">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="gap-patch">
+                                <div class="circle"></div>
+                            </div>
+                            <div class="circle-clipper right">
+                                <div class="circle"></div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="fixed-action-btn" style="bottom: 45px; right:24px;">
                     <a class="btn-floating btn-large blue" href="/edit-quiz">

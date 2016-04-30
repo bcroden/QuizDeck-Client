@@ -30,28 +30,28 @@ describe('Subscriber Management Page', function() {
         expect($ctrl).toBeDefined();
     });
 
-    describe('userSearch()', function() {
-        it('allows you to search for users', function() {
-             // test strings
-            $ctrl.userId = '123';
-            $ctrl.userSearch();
+    // describe('userSearch()', function() {
+    //     it('allows you to search for users', function() {
+    //          // test strings
+    //         $ctrl.userId = '123';
+    //         $ctrl.userSearch();
             
-            expect($location.path).toHaveBeenCalledWith('/user/123');
+    //         expect($location.path).toHaveBeenCalledWith('/user/123');
             
             
-            // test numbers
-            $ctrl.userId = 123;
-            $ctrl.userSearch();
+    //         // test numbers
+    //         $ctrl.userId = 123;
+    //         $ctrl.userSearch();
             
-            expect($location.path).toHaveBeenCalledWith('/user/123');
-        });
+    //         expect($location.path).toHaveBeenCalledWith('/user/123');
+    //     });
 
-        it('does not search if there is no userId', function() {
-            $ctrl.userId = null;
-            $ctrl.userSearch();
+    //     it('does not search if there is no userId', function() {
+    //         $ctrl.userId = null;
+    //         $ctrl.userSearch();
             
-            expect($location.path).not.toHaveBeenCalled();
-        });
+    //         expect($location.path).not.toHaveBeenCalled();
+    //     });
 
-    });
+    // });
 });
