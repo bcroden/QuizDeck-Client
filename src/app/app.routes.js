@@ -37,6 +37,9 @@
                     quiz: getQuiz
                 }
             })
+            .when('/take/:id', {
+                template: '<take-quiz/>'
+            })
             .otherwise('/');
         
         /* @ngInject */

@@ -32,7 +32,11 @@
        //////////////
        
        function nextQuestion() {
-           vm.currentNumber++
+           proctorService
+               .questionIncrement(vm.id)
+               .then(function() {
+                   vm.currentNumber++;
+               });
        }
        
        function startTimer() {

@@ -10,6 +10,8 @@
         
         self.startQuiz = startQuiz;
         self.stopQuiz = stopQuiz;
+        self.questionDecrement = questionDecrement;
+        self.questionIncrement = questionIncrement;
         
         ////////////////
         
@@ -21,6 +23,16 @@
         function stopQuiz(id) {
             return $http
                 .get(serverUrl + '/rest/secure/quiz/deactivate/' + id);
+        }
+        
+        function questionDecrement(id) {
+            return $http
+                .get(serverUrl + '/rest/secure/quiz/questionDecrement/' + id);
+        }
+        
+        function questionIncrement(id) {
+            return $http
+                .get(serverUrl + '/rest/secure/quiz/questionIncrement/' + id);
         }
     }
 })();
