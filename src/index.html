@@ -5,6 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>QuizDeck</title>
         
+        <style>
+            [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+                display: none !important;
+            }
+        </style>
+        
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         
         <link href="/lib/materialize/dist/css/materialize.min.css" rel="stylesheet">
@@ -14,7 +20,7 @@
         <script src="/app.min.js"></script>
     </head>
     <body>
-        <div ng-app="app" ng-strict-di>
+        <div ng-app="app" ng-strict-di ng-cloak>
             <qd-navbar></qd-navbar>
             <div class="container">
                 <ng-view></ng-view>

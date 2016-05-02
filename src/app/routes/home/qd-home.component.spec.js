@@ -22,14 +22,14 @@ ngDescribe({
             $ctrl.quizCode = '123';
             $ctrl.quizSearch();
             
-            expect($location.path).toHaveBeenCalledWith('/quiz/123');
+            expect($location.path).toHaveBeenCalledWith('/take/123');
             
             
             // test numbers
             $ctrl.quizCode = 123;
             $ctrl.quizSearch();
             
-            expect($location.path).toHaveBeenCalledWith('/quiz/123');
+            expect($location.path).toHaveBeenCalledWith('/take/123');
         });
         
         it('does not search if there is no quizCode', function() {

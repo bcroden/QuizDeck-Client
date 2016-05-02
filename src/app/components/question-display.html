@@ -5,7 +5,7 @@
 
             <div ng-repeat="answer in $ctrl.question.answers">
                 <div class="divider"></div>
-                <div class="answer">{{$index+1}}) {{answer.value}}</div>
+                <div class="answer">{{$ctrl.getLetter($index)}}) {{answer.value}}</div>
             </div>
 
             <div class="divider"></div>
@@ -14,7 +14,8 @@
             
             <div class="row right-align">
                 <div class="col s12">
-                    <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.nextQuestion()">Next</button>
+                    <button ng-if="!$ctrl.isLast" class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.nextQuestion()">Next</button>
+                    <button ng-if="$ctrl.isLast" class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.finishQuiz()">Finish Quiz</button>
                 </div>
             </div>
         </div>

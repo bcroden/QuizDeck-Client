@@ -72,11 +72,11 @@
                     question.answers.forEach(function(answer, index) {
                         serverAnswers.push({
                             content: answer.value,
-                            id: index
+                            id: String.fromCharCode(65 + index)
                         });
 
                         if (answer.correct)
-                            correctAnswer = index;
+                            correctAnswer = String.fromCharCode(65 + index);
                     });
 
                     serverQuestions.push({
@@ -95,7 +95,7 @@
                 categories: [quiz.category],
                 labels: convertLabels(quiz.labels) || [],
                 owner: authService.getPayload().user,
-                publicAvailable: quiz.publicAvailable || false,
+                publicAvailable: quiz.publicAvailable || true,
                 questions: convertQuestions(quiz.questions),
                 title: quiz.title || ''
             };
@@ -129,7 +129,7 @@
                     });
                 });
                 
-                clientQuestion.answers[question.correctAnswerID].correct = true;
+                clientQuestion.answers[(question.correctAnswerID.charCodeAt(0)-65)].correct = true;
                 
                 clientQuiz.questions.push(clientQuestion);
             });
