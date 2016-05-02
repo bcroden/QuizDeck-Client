@@ -31,6 +31,9 @@
             .when('/subscriber-management',{
                 template: '<qd-subscriber-management/>'
             })
+            .when('/active-quiz-management',{
+                template: '<qd-active-quiz-management/>'
+            })
             .when('/run-quiz/:id', {
                 template: '<run-quiz quiz="$resolve.quiz"/>',
                 resolve: {

@@ -72,7 +72,7 @@
                })
                .catch(function(){
                    vm.waiting = false;
-                   alert('The subscription failed');
+                   console.log('The subscription failed');
                });
             }
                 

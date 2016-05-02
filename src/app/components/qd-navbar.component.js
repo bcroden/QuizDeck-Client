@@ -9,10 +9,43 @@
         });
     
     /* @ngInject */
-    function Controller(authService) {
+    function Controller(authService, $http, $interval) {
         this.siteName = 'QuizDeck';
+        var vm = this;
         
         this.logout = authService.logout;
         this.isAuthenticated = authService.isAuthenticated;
+        this.checkForActiveQuizzes = checkForActiveQuizzes;
+        
+        var dataFromServer;
+        var numActiveQuizzes;
+        
+        //  dataFromServer = {};
+        //     $http.get("https://quizdeckserver.herokuapp.com/rest/secure/quiz/pollingQuizzes").then(function(response){
+        //         dataFromServer = response.data;
+        //         numActiveQuizzes = dataFromServer.length;
+        //         document.getElementById("activeQuizBadge").innerHTML = numActiveQuizzes;
+        //     });
+        
+        checkForActiveQuizzes();
+            
+        vm.$onInit = function(){
+            vm.checkActiveInterval = $interval(function(){
+                checkForActiveQuizzes();
+            }, 5000);
+        }
+        
+        vm.$onDestroy = function(){
+            $interval.cancel(vm.checkActiveInterval);
+        }
+            
+        function checkForActiveQuizzes(){
+            dataFromServer = {};
+            $http.get("https://quizdeckserver.herokuapp.com/rest/secure/quiz/pollingQuizzes").then(function(response){
+                dataFromServer = response.data;
+                numActiveQuizzes = dataFromServer.length;
+                document.getElementById("activeQuizBadge").innerHTML = numActiveQuizzes;
+            });
+        }
     }
 })();
