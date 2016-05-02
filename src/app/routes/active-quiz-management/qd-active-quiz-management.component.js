@@ -15,12 +15,6 @@
         vm.returnActiveQuizzes = returnActiveQuizzes;
         vm.quizSearch = quizSearch;
         
-        //  $http.get("https://quizdeckserver.herokuapp.com/rest/secure/quiz/pollingQuizzes").then(function(response){
-        //         dataFromServer = response.data;
-        //         dataFromServer.forEach(function(quiz){
-        //            console.log(quiz); 
-        //         });
-        //     });
         getActiveQuizzes();
         
         var dataFromServer = {};
@@ -58,7 +52,6 @@
         }
         
         function quizSearch(quizId) {
-            alert('hi quiz id is ' + quizId);
                 $location.path('/take/' + this.quizCode);
         }
     }
