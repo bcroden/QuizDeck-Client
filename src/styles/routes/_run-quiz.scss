@@ -2,4 +2,9 @@
     .clickable {
         cursor: pointer;
     }
+    .options {
+        label:last-child {
+            margin-left: 30px;
+        }
+    }
 }

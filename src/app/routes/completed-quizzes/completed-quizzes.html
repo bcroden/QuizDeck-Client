@@ -1,0 +1,15 @@
+<div class="completed-quizzes">
+    <div class="row">
+        <h4 class="center-align">Completed Quzzes</h4>
+    </div>
+    <div class="row">
+        <div class="col s12">
+            <ul class="collection">
+                <a ng-href="/quiz-results/{{quiz.id}}" class="collection-item" ng-repeat="quiz in $ctrl.completedQuizzes">
+                    <h5 class="title">{{quiz.title}}</h5>
+                    <p>{{$ctrl.getStopDate(quiz)}}</p>
+                </a>
+            </ul>
+        </div>
+    </div>
+</div>

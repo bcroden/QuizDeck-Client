@@ -1,7 +1,14 @@
 <div class="quiz-graph">
     <div class="card">
         <div class="card-content">
-            The graph goes here
+            Total Responses: {{$ctrl.getTotalAnswers()}}
+            <br/><br/>
+            <ul class="chart">
+                <li ng-repeat="(key, val) in $ctrl.answers">
+                    <span class="bar" ng-style="$ctrl.getStyle(key)" title="{{key}}"><span>{{val}}</span></span>
+                </li>
+            </ul>
+            <br/>
         </div>
     </div>
 </div>

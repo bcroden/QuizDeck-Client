@@ -38,15 +38,52 @@
                 }
             })
             .when('/take/:id', {
-                template: '<take-quiz/>'
+                template: '<take-quiz id="$resolve.id"/>',
+                resolve: {
+                    id: getId
+                }
+            })
+            .when('/completed-quizzes', {
+                template: '<completed-quizzes completed-quizzes="$resolve.completedQuizzes"/>',
+                resolve: {
+                    completedQuizzes: getCompletedQuizzes
+                }
+            })
+            .when('/quiz-results/:id', {
+                template: '<quiz-results completed-quiz="$resolve.completedQuiz"/>',
+                resolve: {
+                    completedQuiz: getCompletedQuiz
+                }
             })
             .otherwise('/');
+        
+        /* @ngInject */
+        function getId($route) {
+            return $route.current.params.id;
+        }
         
         /* @ngInject */
         function getQuiz(quizService, $route) {
             var id = $route.current.params.id;
             if(id)
                 return quizService.getQuiz(id);
+        }
+        
+        /* @ngInject */
+        function getCompletedQuizzes(completedQuizService) {
+            return completedQuizService.getCompletedQuizzes();
+        }
+        
+        /* @ngInject */
+        function getCompletedQuiz(completedQuizService, $route) {
+            return completedQuizService
+                .getCompletedQuizzes()
+                .then(function(response){
+                    return response
+                        .filter(function(quiz) {
+                            return quiz.id === $route.current.params.id;
+                        })[0];
+                });
         }
         
         /* @ngInject */

@@ -16,7 +16,7 @@
         
         function quizSearch() {
             if(this.quizCode)
-                $location.path('/quiz/' + this.quizCode);
+                $location.path('/take/' + this.quizCode);
         }
     }
 })();

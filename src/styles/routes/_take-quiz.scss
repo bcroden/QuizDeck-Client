@@ -1,0 +1,12 @@
+.take-quiz {
+    .col {
+        margin-bottom: 20px;
+    }
+    .answer {
+        background-color: darkgray;
+        width: 90%;
+        &.active {
+            background-color: limegreen;
+        }
+    }
+}

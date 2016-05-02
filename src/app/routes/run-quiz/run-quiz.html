@@ -3,13 +3,16 @@
         <h4>{{$ctrl.quiz.title}}</h4>
     </div>
 
-    <div class="row center-align">
+    <div class="options row center-align">
+        <input type="checkbox" id="public" ng-model="$ctrl.isPublic" />
+        <label for="public">Alert Subscribers</label>
+        
         <input type="checkbox" id="hideResults" ng-model="$ctrl.hideResults" />
         <label for="hideResults">Hide Responses</label>
     </div>
     
-    <div class="row center-align">
-        {{$ctrl.getTime()}}
+    <div ng-if="$ctrl.isRunning" class="row center-align">
+        The quiz has been running for: {{$ctrl.getTime()}}
     </div>
     
     <div class="row center-align">
@@ -19,12 +22,16 @@
 
     <div ng-if="!$ctrl.hideResults" class="row">
 
-        <div class="col s6">
-            <question-display question="$ctrl.quiz.questions[$ctrl.currentNumber]" next-question="$ctrl.nextQuestion()"/>
+        <div class="col s12 l6">
+            <question-display
+                question="$ctrl.quiz.questions[$ctrl.currentNumber]"
+                is-last="$ctrl.quiz.questions.length-1 === $ctrl.currentNumber"
+                next-question="$ctrl.nextQuestion()"
+                finish-quiz="$ctrl.finishQuiz()"/>
         </div>
 
-        <div class="col s6">
-            <quiz-graph answers="[5, 7, 3]"/>
+        <div class="col s12 l6">
+            <quiz-graph answers="$ctrl.graphAnswers[$ctrl.currentNumber]"/>
         </div>
 
     </div>
@@ -32,7 +39,11 @@
     <div ng-if="$ctrl.hideResults" class="row">
 
         <div class="col s8 offset-s2">
-            <question-display question="$ctrl.quiz.questions[$ctrl.currentNumber]"/>
+            <question-display
+                question="$ctrl.quiz.questions[$ctrl.currentNumber]"
+                is-last="$ctrl.quiz.questions.length-1 === $ctrl.currentNumber"
+                next-question="$ctrl.nextQuestion()"
+                finish-quiz="$ctrl.finishQuiz()"/>
         </div>
 
     </div>
