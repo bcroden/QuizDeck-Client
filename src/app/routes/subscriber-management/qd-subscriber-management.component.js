@@ -45,7 +45,7 @@
             vm.waiting = true;
             
             if(this.userName){
-               $http.get(serverUrl + "/rest/secure/user/findUser/" + vm.userName).then(function(foundUsers){
+               $http.get(serverUrl + '/rest/secure/user/findUser/' + vm.userName).then(function(foundUsers){
                    $http.get(serverUrl + '/rest/secure/user/getSubscriptions/').then(function(foundSubscriptions){
                          vm.waiting = false;
                          
@@ -72,7 +72,7 @@
                })
                .catch(function(){
                    vm.waiting = false;
-                   alert('The subscription failed');
+                   console.log('The subscription failed');
                });
             }
                 
@@ -84,7 +84,7 @@
                 
             vm.waiting = true;
             
-            $http.put(serverUrl = '/rest/secure/user/unSubscribe/' + name).then(function(response){
+            $http.put(serverUrl + '/rest/secure/user/unSubscribe/' + name).then(function(response){
                 
                 vm.waiting = false;
                 

@@ -32,6 +32,9 @@
                 authRole: 'User',
                 template: '<qd-subscriber-management/>'
             })
+            .when('/active-quiz-management',{
+                template: '<qd-active-quiz-management/>'
+            })
             .when('/run-quiz/:id', {
                 authRole: 'User',
                 template: '<run-quiz quiz="$resolve.quiz"/>',

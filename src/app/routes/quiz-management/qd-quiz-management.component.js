@@ -35,7 +35,6 @@
 
             var searchFilter = vm.searchCriteria;
             listOfData = {};
-            
             $http
                 .get(serverUrl + '/rest/secure/quiz/searchBySelf').then(function(response) {
                     vm.waiting = false;
