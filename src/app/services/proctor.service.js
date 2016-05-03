@@ -117,7 +117,7 @@
                 
                 user = $window.localStorage.anonUsername;
                 if(!user)
-                    user = 'Anon'+Math.floor(Math.random()*100000000);
+                    user = Math.floor(Math.random()*100000000);
                 $window.localStorage.anonUsername = user;
             }
             
