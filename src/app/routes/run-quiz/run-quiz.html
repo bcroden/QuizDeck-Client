@@ -1,6 +1,6 @@
 <div class="run-quiz">
     <div class="row center-align">
-        <h4>{{$ctrl.quiz.title}}</h4>
+        <h4>{{$ctrl.quiz.title}} <span ng-if="$ctrl.isRunning"> - {{$ctrl.shortCode}}</span></h4>
     </div>
 
     <div class="options row center-align">
