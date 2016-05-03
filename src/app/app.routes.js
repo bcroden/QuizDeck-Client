@@ -59,6 +59,13 @@
                     completedQuiz: getCompletedQuiz
                 }
             })
+            .when('/my-profile', {
+                authRole: 'User',
+                template: '<user-edit user-info="$resolve.userInfo"/>',
+                resolve: {
+                    userInfo: getUserInfo
+                }
+            })
             .otherwise('/');
         
         /* @ngInject */
@@ -93,6 +100,11 @@
         /* @ngInject */
         function getCategories($q) {
             return $q.when(['Geography']);
+        }
+        
+        /* @ngInject */
+        function getUserInfo(userService) {
+            return userService.getUserInfo();
         }
     }
 })();

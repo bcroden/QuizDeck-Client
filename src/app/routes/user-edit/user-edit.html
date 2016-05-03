@@ -1,0 +1,21 @@
+<div class="user-edit  center-align">
+    <div class="row">
+        <h4>{{$ctrl.userInfo.userName}}</h4>
+    </div>
+    <div class="right-align">
+        <div input-field>
+            <input type="email" ng-model="$ctrl.userInfo.email">
+            <label>Email</label>
+        </div>
+        <div input-field>
+            <input type="password" ng-model="$ctrl.password">
+            <label>Update Password</label>
+        </div>
+        <div input-field>
+            <input type="password" ng-model="$ctrl.repeatedPassword">
+            <label>Repeat Password</label>
+        </div>
+        <a href="/" class="waves-effect btn-flat">Cancel</a>
+        <button class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.save()">Save</button>
+    </div>
+</div>
