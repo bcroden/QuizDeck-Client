@@ -1,6 +1,7 @@
 <div class="quiz-results">
     <div class="row center-align">
-        <h4>{{$ctrl.completedQuiz.title}}</h4>
+        <h4>{{$ctrl.completedQuiz.title}} Results</h4>
+        <div>{{$ctrl.getDateString()}}</div>
     </div>
     <div class="row">
         <div class="col s12">
@@ -10,10 +11,10 @@
             </ul>
         </div>
         <div id="accuracy" class="col s12">
-            <accuracy quiz-id="$ctrl.completedQuiz.quizId"></accuracy>
+            <accuracy title="$ctrl.completedQuiz.title" quiz-id="$ctrl.completedQuiz.quizId"></accuracy>
         </div>
         <div id="indecisiveness" class="col s12">
-            
+            <indecisiveness title="$ctrl.completedQuiz.title" quiz-id="$ctrl.completedQuiz.quizId"></indecisiveness>
         </div>
     </div>
 </div>

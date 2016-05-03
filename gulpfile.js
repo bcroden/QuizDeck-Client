@@ -35,7 +35,8 @@ gulp.task('vendor', function() {
             lib + '/materialize/dist/js/materialize.min.js',
             lib + '/angular/angular.min.js',
             lib + '/angular-route/angular-route.min.js',
-            lib + '/angular-materialize/src/angular-materialize.js'
+            lib + '/angular-materialize/src/angular-materialize.js',
+            lib + '/excellentexport/excellentexport.min.js'
         ])
         .pipe($.concat('vendor.min.js'))
         .pipe(gulp.dest(out));

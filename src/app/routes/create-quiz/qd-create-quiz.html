@@ -10,10 +10,10 @@
     
     <div class="row">
         <div class="col s12 m6">
-            <select class="" ng-model="$ctrl.quiz.category" material-select watch>
-                <option value="" disabled selected>Category</option>
-                <option ng-repeat="value in $ctrl.categories">{{value}}</option>
-            </select>
+            <div input-field>
+                <input type="text" ng-model="$ctrl.quiz.category">
+                <label>Category</label>
+            </div>
         </div>
         <div class="col s12 m6">
             <badges-list chips="$ctrl.quiz.labels"></badges-list>

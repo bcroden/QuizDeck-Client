@@ -7,7 +7,7 @@
             controller: Controller,
             templateUrl: 'app/components/badges-list.html',
             bindings: {
-                // chips: '<',
+                chips: '=',
                 onDelete: '<',
             }
         })
@@ -16,7 +16,13 @@
     function Controller() {
         var vm = this;
         
-        vm.chips = vm.chips || [];
+        vm.$onInit = function() {
+            vm.chips = vm.chips.map(function(input){
+                return {text: input};
+            });
+        }
+        
+        // vm.chips = vm.chips || [];
         
         vm.delete = vm.onDelete || function(index) {
             vm.chips.splice(index, 1);

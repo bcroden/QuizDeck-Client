@@ -13,13 +13,13 @@
                 <div class="left-align">
                     <ul class="collapsible" data-collapsible="accordion">
                         <li ng-repeat="(key, values) in $ctrl.getFilteredQuizes()">
-                            <div class="collapsible-header" class="left-align"> {{key}} </div>
+                            <div class="collapsible-header" class="left-align"  ng-class="{active: $first}"> {{key}} </div>
                             <div class="collapsible-body">
                                 <ul class="collection">
                                     <li class="collection-item" ng-repeat="value in values track by $index">
                                         <a ng-href="/edit-quiz/{{value.id}}"> {{value.title}} </a>
                                         <a class="chip" ng-repeat="temp in value.labels track by $index"> {{temp}} </a>
-                                        <a ng-href="/run-quiz/{{value.id}}" class="secondary-content">
+                                        <a ng-href="/run-quiz/{{value.id}}" class="secondary-content tooltipped" data-position="left" data-delay="50" data-tooltip="Run Quiz">
                                             <i class="material-icons">play_circle_outline</i>
                                         </a>
                                     </li>
@@ -44,8 +44,8 @@
                         </div>
                     </div>
                 </div>
-                <div class="fixed-action-btn" style="bottom: 45px; right:24px;">
-                    <a class="btn-floating btn-large blue" href="/edit-quiz">
+                <div class="fixed-action-btn " style="bottom: 45px; right:24px;" >
+                    <a class="btn-floating btn-large blue tooltipped" href="/edit-quiz" data-position="left" data-delay="50" data-tooltip="Create New Quiz">
                         <i class="large material-icons">add</i>
                     </a>
                 </div>

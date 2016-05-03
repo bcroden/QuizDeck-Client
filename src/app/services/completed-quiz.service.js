@@ -10,6 +10,7 @@
         
         self.getCompletedQuizzes = getCompletedQuizzes;
         self.getAccuracy = getAccuracy;
+        self.getIndecisiveness = getIndecisiveness;
         
         ////////////////
         
@@ -24,6 +25,14 @@
         function getAccuracy(id) {
             return $http
                 .get(serverUrl + '/rest/secure/analysis/accuracy/' + id)
+                .then(function(result){
+                    return result.data;
+                });
+        }
+        
+        function getIndecisiveness(id) {
+            return $http
+                .get(serverUrl + '/rest/secure/analysis/indecisiveness/' + id)
                 .then(function(result){
                     return result.data;
                 });
