@@ -34,11 +34,14 @@
             
         function checkForActiveQuizzes(){
             dataFromServer = {};
-            $http.get(serverUrl + '/rest/secure/quiz/pollingQuizzes').then(function(response){
-                dataFromServer = response.data;
-                numActiveQuizzes = dataFromServer.length;
-                document.getElementById("activeQuizBadge").innerHTML = numActiveQuizzes;
-            });
+            
+            if(authService.isAuthenticated()){
+                $http.get(serverUrl + '/rest/secure/quiz/pollingQuizzes').then(function(response){
+                    dataFromServer = response.data;
+                    numActiveQuizzes = dataFromServer.length;
+                    document.getElementById("activeQuizBadge").innerHTML = numActiveQuizzes;
+                });
+            }
         }
     }
 })();

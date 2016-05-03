@@ -9,7 +9,7 @@
         });
     
     /* @ngInject */
-    function Controller($location, $http, $interval, serverUrl) {
+    function Controller($location, $http, $interval, serverUrl, authService) {
         this.getActiveQuizzes = getActiveQuizzes;
         var vm = this;
         vm.returnActiveQuizzes = returnActiveQuizzes;
@@ -35,13 +35,15 @@
             vm.waiting = true;
             
             dataFromServer = {};
-            $http.get(serverUrl + '/rest/secure/quiz/pollingQuizzes').then(function(response){
-                vm.waiting = false;
-                dataFromServer = response.data;
-            }).catch(function(){
-                vm.waiting = false;
-                console.log('The server had a problem returning active quizzes')
-            });
+            if(authService.isAuthenticated()){
+                $http.get(serverUrl + '/rest/secure/quiz/pollingQuizzes').then(function(response){
+                    vm.waiting = false;
+                    dataFromServer = response.data;
+                }).catch(function(){
+                    vm.waiting = false;
+                    console.log('The server had a problem returning active quizzes')
+                });
+            }
         }
         
         function returnActiveQuizzes(){
