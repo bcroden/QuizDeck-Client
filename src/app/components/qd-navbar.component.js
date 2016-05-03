@@ -9,7 +9,7 @@
         });
     
     /* @ngInject */
-    function Controller(authService, $http, $interval) {
+    function Controller(authService, $http, $interval, serverUrl) {
         this.siteName = 'QuizDeck';
         var vm = this;
         
@@ -19,13 +19,6 @@
         
         var dataFromServer;
         var numActiveQuizzes;
-        
-        //  dataFromServer = {};
-        //     $http.get("https://quizdeckserver.herokuapp.com/rest/secure/quiz/pollingQuizzes").then(function(response){
-        //         dataFromServer = response.data;
-        //         numActiveQuizzes = dataFromServer.length;
-        //         document.getElementById("activeQuizBadge").innerHTML = numActiveQuizzes;
-        //     });
         
         checkForActiveQuizzes();
             
@@ -41,7 +34,7 @@
             
         function checkForActiveQuizzes(){
             dataFromServer = {};
-            $http.get("https://quizdeckserver.herokuapp.com/rest/secure/quiz/pollingQuizzes").then(function(response){
+            $http.get(serverUrl + '/rest/secure/quiz/pollingQuizzes').then(function(response){
                 dataFromServer = response.data;
                 numActiveQuizzes = dataFromServer.length;
                 document.getElementById("activeQuizBadge").innerHTML = numActiveQuizzes;
