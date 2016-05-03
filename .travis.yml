@@ -3,14 +3,14 @@ node_js:
 - '4.1'
 cache:
   directories:
-    - node_modules
-    - lib
+  - node_modules
+  - lib
 after_success:
 - cat ./coverage/lcov/lcov.info | ./node_modules/coveralls/bin/coveralls.js
 deploy:
   provider: heroku
   api_key:
-    secure: TVI3rFAtLSc4F/xw8blEi7LywQvpsEb/Hr4OprJ9lndka4YNwVih4YMwz7xv7Pohht5OV7XMNxLEB3NqdxiUNlEfIc077OqtqBmJ7b5uAGjVv8E2i6HpCB9Yy2qjy6qegC3JLVEoEb/qsubQsOnPL8hSSSn4F2KH8SHoeAlIVXTWJSgrx6j/PK1GJrNi8uL5/Q93sbfkcGlBjB222qHxXRyXSdnbyN5kdZUQmGGhwhIB5p4I5Y04wDkrmpE/kNtvUMYYYkJNbH/XgFnvDVnaB6w07ncYEch06/+JLDtiyU1t9OGyBMrtFJrxk7nL9s/pbFcpr56HElV4NaPTRIxiRRtitGOcpKncOqzncMJ4MEGynRaRw/fxoOnzWefYUnlm5D9/RCMMyahn/TC1niqZAb+9OmJ2Ng9s2+4W9bTW2zT/mmfzRi4OU5IndUSU5RqGgO+a7NIR/pQaui5oBkQC1137L/Ztm/m7D+V4iCi3cXtkYoC67rIRekJGCFIk+ObtS0S6vpEpvTuj/rio7TMKKpX54MOo5Qf6bzHzbX8Szgl++GZCpcyid93puMcDY6egmm3H5NTP9BWz3D7Lw41FGCfevtXeDvdSLG4DR/VH3E6/hd9FPdaSG1Qndw3e/UEJrJ+4ginABzqsE1VaF2jud85gxoFqde187es7iLLeKzg=
+    secure: ZmskeEMSXo+bX9JiPKV05O/V22iuErAR0QPe4JfnXrk96qqkWhVQmkWDLDe1gsc4zgoS9cwKeTfcmDdUrcSSBeBzOqs0mYNeGGbeJQSDvXZ7AJ44he5eRUKybVTSdKe0/7r6rZfu8kCT277qAv0xOHsYfetBXzz/2JvKdrdHnQLtHQKA4B0exlg3B5lu6utntgNUX71rhL20Ibq1ezLziM/T/nMIjGZjZbP+/ecizHNDGKRLKo19aRcLElGs2kiC7NyiPJvHUJP5kQciL8i91+smeVjTCKXnie+CDWSmqMdTsK2X5tOQh5tyKx2QGNIwlYllldQ5glBbzEaP7/3jmURZflEiyKqIBemjWgQEIaVR5Z7V7Y36los/oJli+YI+XH7an1O8HIb2T5KqNTlLQjW/7RMq45nzn4KLYGfiOzHZEow4HdQsryXSWRlzZN5UmtOGo/eLAaNv0Ec4+MAeUtvyzn7o01dfGa+cdBi9telJJ9PjFX+IvkK1CDsYikkI7GdrEgDZ2EvoSGahzmhTipaxArlsfgQd2DEfaFA5x7l1SR47XUAkwE099kxwpb0FkbMNmYBCFRi7FgQlXi3r1/6OSKCF6O0sbDLHk/MUVLlRT37PGP3+ElnfpCNWHbmDEMS7KXvY1SWYS29uw4HT2LoGQ/QlaETCtCzEnq+Il4A=
   app: quizdeck
   on:
     branch: master
@@ -18,7 +18,7 @@ deploy:
 notifications:
   webhooks:
     urls:
-      - https://webhooks.gitter.im/e/e420c4632b5411024ce1
+    - https://webhooks.gitter.im/e/e420c4632b5411024ce1
     on_success: always
     on_failure: always
     on_start: never
