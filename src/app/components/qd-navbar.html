@@ -22,6 +22,8 @@
                 <li ng-if="$ctrl.isAuthenticated()"><a href="/completed-quizzes">Quiz Results</a></li>
                 <li ng-if="$ctrl.isAuthenticated()"><a href="/my-profile">My Profile</a></li>
                 <li ng-if="$ctrl.isAuthenticated()"><a href="/" ng-click="$ctrl.logout()">Logout</a></li>
+                <li ng-if="$ctrl.isAuthenticated()"><a href="/active-quiz-management" ng-click="$ctrl.checkForActiveQuizzes()">Active Quizzes 
+                    <span id="activeQuizBadge" class="new badge">0</span></a></li>
                 <li ng-if="!$ctrl.isAuthenticated()"><a href="/login">Login</a></li>
                 <li ng-if="!$ctrl.isAuthenticated()"><a href="/create-account">Create Account</a></li>
             </ul>
