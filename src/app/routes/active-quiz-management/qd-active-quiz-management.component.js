@@ -9,7 +9,7 @@
         });
     
     /* @ngInject */
-    function Controller($location, $http, $interval) {
+    function Controller($location, $http, $interval, serverUrl) {
         this.getActiveQuizzes = getActiveQuizzes;
         var vm = this;
         vm.returnActiveQuizzes = returnActiveQuizzes;
@@ -35,12 +35,9 @@
             vm.waiting = true;
             
             dataFromServer = {};
-            $http.get("https://quizdeckserver.herokuapp.com/rest/secure/quiz/pollingQuizzes").then(function(response){
+            $http.get(serverUrl + '/rest/secure/quiz/pollingQuizzes').then(function(response){
                 vm.waiting = false;
                 dataFromServer = response.data;
-                dataFromServer.forEach(function(quiz){
-                   console.log(quiz); 
-                });
             }).catch(function(){
                 vm.waiting = false;
                 console.log('The server had a problem returning active quizzes')

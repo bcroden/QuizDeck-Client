@@ -9,7 +9,7 @@
         });
 
     /* @ngInject */
-    function Controller($location, $http) {
+    function Controller($location, $http, serverUrl) {
         var vm = this;
 
         vm.getFilteredQuizes = getFilteredQuizes;
@@ -32,7 +32,7 @@
 
             var searchFilter = vm.searchCriteria;
             listOfData = {};
-            $http.get('https://quizdeckserver.herokuapp.com/rest/secure/quiz/searchBySelf').then(function (response) {
+            $http.get(serverUrl + '/rest/secure/quiz/searchBySelf').then(function (response) {
                 vm.waiting = false;
                 dataFromServer = response.data;
                 dataFromServer.forEach(function (quiz) {

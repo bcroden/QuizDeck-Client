@@ -8,7 +8,7 @@
                       <li class="collection-item" ng-repeat="quiz in $ctrl.returnActiveQuizzes() track by $index">
                       <div>
                           <a href="" ng-click="$ctrl.quizSearch(quiz.quizId)">{{quiz.owner}}</a>
-                          <span class="secondary-content">{{quiz.quizId}}</span>
+                          <span class="secondary-content">{{quiz.shortId}}</span>
                       </div>
                     </ul>
                 </div>
