@@ -1,7 +1,7 @@
 <div class="take-quiz center-align">
     <div class="row">
         <div class="col s12 offset-m2 m8" ng-repeat="answer in $ctrl.answers">
-            <button class="answer waves-effect waves-light btn-large" ng-class="{active: $ctrl.activeAnswer === $index}" ng-click="$ctrl.onAnswerClick($index)">{{answer}}</button>
+            <button class="answer waves-effect waves-light btn-large" ng-click="$ctrl.onAnswerClick($index)">{{answer}}</button>
         </div>
     </div>
 </div>

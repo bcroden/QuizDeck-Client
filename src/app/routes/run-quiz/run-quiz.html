@@ -1,6 +1,6 @@
 <div class="run-quiz">
     <div class="row center-align">
-        <h4>{{$ctrl.quiz.title}}</h4>
+        <h4>{{$ctrl.quiz.title}} <span ng-if="$ctrl.isRunning"> - {{$ctrl.shortCode}}</span></h4>
     </div>
 
     <div class="options row center-align">
@@ -20,31 +20,36 @@
         <button ng-if="$ctrl.isRunning" class="blue darken-1 btn waves-effect waves-light" ng-click="$ctrl.stopQuiz()">Stop</button>
     </div>
 
-    <div ng-if="!$ctrl.hideResults" class="row">
+    <div ng-if="!$ctrl.firstTime">
 
-        <div class="col s12 l6">
-            <question-display
-                question="$ctrl.quiz.questions[$ctrl.currentNumber]"
-                is-last="$ctrl.quiz.questions.length-1 === $ctrl.currentNumber"
-                next-question="$ctrl.nextQuestion()"
-                finish-quiz="$ctrl.finishQuiz()"/>
+        <div ng-if="!$ctrl.hideResults" class="row">
+
+            <div class="col s12 l6">
+                <question-display
+                    question="$ctrl.quiz.questions[$ctrl.currentNumber]"
+                    is-last="$ctrl.quiz.questions.length-1 === $ctrl.currentNumber"
+                    next-question="$ctrl.nextQuestion()"
+                    finish-quiz="$ctrl.finishQuiz()"/>
+            </div>
+
+            <div class="col s12 l6">
+                <quiz-graph answers="$ctrl.graphAnswers[$ctrl.currentNumber]"/>
+            </div>
+
         </div>
 
-        <div class="col s12 l6">
-            <quiz-graph answers="$ctrl.graphAnswers[$ctrl.currentNumber]"/>
-        </div>
+        <div ng-if="$ctrl.hideResults" class="row">
 
+            <div class="col s8 offset-s2">
+                <question-display
+                    question="$ctrl.quiz.questions[$ctrl.currentNumber]"
+                    is-last="$ctrl.quiz.questions.length-1 === $ctrl.currentNumber"
+                    next-question="$ctrl.nextQuestion()"
+                    finish-quiz="$ctrl.finishQuiz()"/>
+            </div>
+
+        </div>
+        
     </div>
-
-    <div ng-if="$ctrl.hideResults" class="row">
-
-        <div class="col s8 offset-s2">
-            <question-display
-                question="$ctrl.quiz.questions[$ctrl.currentNumber]"
-                is-last="$ctrl.quiz.questions.length-1 === $ctrl.currentNumber"
-                next-question="$ctrl.nextQuestion()"
-                finish-quiz="$ctrl.finishQuiz()"/>
-        </div>
-
-    </div>
+    
 </div>

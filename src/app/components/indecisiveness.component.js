@@ -3,9 +3,9 @@
     
     angular
         .module('app')
-        .component('accuracy', {
+        .component('indecisiveness', {
             controller: Controller,
-            templateUrl: 'app/components/accuracy.html',
+            templateUrl: 'app/components/indecisiveness.html',
             bindings: {
                 title: '=',
                 quizId: '='
@@ -13,24 +13,22 @@
         })
     
     /* @ngInject */
-    function Controller(completedQuizService) {
+    function Controller($timeout, completedQuizService) {
         var vm = this;
         
-        vm.getAverageScore = getAverageScore;
         vm.getParticipants = getParticipants;
-        vm.getParticipantGrade = getParticipantGrade;
-        vm.getStyles = getStyles;
         vm.getQuestions = getQuestions;
-        vm.getParticipantAnswers = getParticipantAnswers;
+        vm.getNumQuestions = getNumQuestions;
+        vm.getParticipantIndecisiveness = getParticipantIndecisiveness;
         vm.getExcelTitle = getExcelTitle;
         
         vm.$onInit = function() {
             console.log(vm.quizId);
             
             completedQuizService
-                .getAccuracy(vm.quizId)
+                .getIndecisiveness(vm.quizId)
                 .then(function(response) {
-                    vm.accuracyData = response;
+                    vm.data = response;
                     console.log(response);
                 });
         }
@@ -45,18 +43,9 @@
         
         ////////////////
         
-        function getAverageScore() {
-            try {
-                return vm.accuracyData.stats["Average Accuracy Per Participant"]*100;
-            }
-            catch (e) {
-                return "";
-            }
-        }
-        
         function getQuestions() {
             try {
-                return vm.accuracyData.questions;
+                return vm.data.questions;
             }
             catch (e) {
                 return "";
@@ -65,7 +54,7 @@
         
         function getNumQuestions() {
             try {
-                return vm.accuracyData.questions.length;
+                return vm.data.questions.length;
             }
             catch (e) {
                 return "";
@@ -74,36 +63,20 @@
         
         function getParticipants() {
             try {
-                return Object.keys(vm.accuracyData.data).sort();
+                return Object.keys(vm.data.data).sort();
             }
             catch (e) {
                 return "";
             }
         }
         
-        function getParticipantGrade(user) {
-            try {
-                return vm.accuracyData.data[user].stats["Accuracy Percentage"]*100;
-            }
-            catch (e) {
-                return "";
-            }
-        }
-        
-        function getStyles(grade) {
-            return {
-                'grade-fail': grade < 70.0,
-                'grade-ok': grade >= 70.0 && grade < 90.0,
-                'grade-good': grade >= 90.0
-            }
-        }
-        
-        function getParticipantAnswers(user) {
+        function getParticipantIndecisiveness(user) {
             var answers = [];
             
             for(var i = 0; i < getNumQuestions(); i++) {
                 try {
-                    answers[i] = vm.accuracyData.data[user].data[i][0].selection.id;
+                    answers[i] = vm.data.data[user].stats['Indecisiveness Score for Q' + i];
+                    console.log(answers[i]);
                 }
                 catch (e) {
                     answers[i] = "";
@@ -114,7 +87,7 @@
         }
         
         function getExcelTitle() {
-            return vm.title + '-Accuracy';
+            return vm.title + '-Indecisiveness';
         }
     }
 })();

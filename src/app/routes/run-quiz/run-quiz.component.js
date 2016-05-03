@@ -75,7 +75,10 @@
        function startQuiz() {
            return proctorService
                .startQuiz(vm.id, vm.isPublic)
-               .then(function() {
+               .then(function(response) {
+                   vm.shortCode = response.data;
+                   console.log(vm.shortCode);
+                   
                    vm.isRunning = true;
                    vm.firstTime = false;
                    startTimer()

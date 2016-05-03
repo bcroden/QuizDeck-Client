@@ -29,9 +29,11 @@
                 template: '<qd-login/>'
             })
             .when('/subscriber-management',{
+                authRole: 'User',
                 template: '<qd-subscriber-management/>'
             })
             .when('/run-quiz/:id', {
+                authRole: 'User',
                 template: '<run-quiz quiz="$resolve.quiz"/>',
                 resolve: {
                     quiz: getQuiz
@@ -44,12 +46,14 @@
                 }
             })
             .when('/completed-quizzes', {
+                authRole: 'User',
                 template: '<completed-quizzes completed-quizzes="$resolve.completedQuizzes"/>',
                 resolve: {
                     completedQuizzes: getCompletedQuizzes
                 }
             })
             .when('/quiz-results/:id', {
+                authRole: 'User',
                 template: '<quiz-results completed-quiz="$resolve.completedQuiz"/>',
                 resolve: {
                     completedQuiz: getCompletedQuiz

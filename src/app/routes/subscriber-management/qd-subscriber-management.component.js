@@ -13,7 +13,7 @@
       var users;
 
     /* @ngInject */
-    function Controller($location, $http) {
+    function Controller($location, $http, serverUrl) {
 
         var vm = this;
         this.getNames = getNames;
@@ -45,8 +45,8 @@
             vm.waiting = true;
             
             if(this.userName){
-               $http.get("https://quizdeckserver.herokuapp.com/rest/secure/user/findUser/" + vm.userName).then(function(foundUsers){
-                   $http.get('https://quizdeckserver.herokuapp.com/rest/secure/user/getSubscriptions/').then(function(foundSubscriptions){
+               $http.get(serverUrl + "/rest/secure/user/findUser/" + vm.userName).then(function(foundUsers){
+                   $http.get(serverUrl + '/rest/secure/user/getSubscriptions/').then(function(foundSubscriptions){
                          vm.waiting = false;
                          
                         subscribers = foundSubscriptions.data;
@@ -84,7 +84,7 @@
                 
             vm.waiting = true;
             
-            $http.put('https://quizdeckserver.herokuapp.com/rest/secure/user/unSubscribe/' + name).then(function(response){
+            $http.put(serverUrl = '/rest/secure/user/unSubscribe/' + name).then(function(response){
                 
                 vm.waiting = false;
                 
@@ -105,7 +105,7 @@
                 
             vm.waiting = true;
             
-            $http.put('https://quizdeckserver.herokuapp.com/rest/secure/user/subscribe/' + name).then(function(response){
+            $http.put(serverUrl + '/rest/secure/user/subscribe/' + name).then(function(response){
                 
                 vm.waiting = false;
                 

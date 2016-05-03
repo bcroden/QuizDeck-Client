@@ -12,7 +12,7 @@
         });
     
     /* @ngInject */
-    function Controller() {
+    function Controller(dateService) {
         var vm = this;
         
         vm.getStopDate = getStopDate;
@@ -24,9 +24,7 @@
         //////////////
         
         function getStopDate(quiz) {
-            var date = new Date(quiz.stop)
-            
-            return (date.getMonth()+1) + "/" + date.getDate() + '/' + date.getFullYear() + ' ' + date.getHours() + ':' + date.getMinutes();
+            return dateService.toString(new Date(quiz.stop));
         }
     }
 })();

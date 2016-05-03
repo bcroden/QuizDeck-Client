@@ -23,24 +23,24 @@
            
            vm.answers = ['A', 'B', 'C', 'D'];
            
-           vm.updateQuestionNum = $interval(function() {
-               proctorService
-                   .getCurrentQuestion(vm.id)
-                   .then(function(response) {
-                       vm.currentQuestion = response.data;
-                   });
-           }, 500);
+        //    vm.updateQuestionNum = $interval(function() {
+        //        proctorService
+        //            .getCurrentQuestion(vm.id)
+        //            .then(function(response) {
+        //                vm.currentQuestion = response.data;
+        //            });
+        //    }, 500);
        };
        
        vm.$onDestroy = function() {
-           $interval.cancel(vm.updateQuestionNum);
+        //    $interval.cancel(vm.updateQuestionNum);
        };
        
        //////////////
        
        function onAnswerClick(answer) {
            vm.activeAnswer = answer;
-           proctorService.submitAnswer(vm.id, vm.answers[vm.activeAnswer], vm.currentQuestion);
+           proctorService.submitAnswer(vm.id, vm.answers[vm.activeAnswer], 0);
        }
    }
 })();

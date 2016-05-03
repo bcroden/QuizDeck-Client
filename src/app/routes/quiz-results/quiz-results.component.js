@@ -12,8 +12,10 @@
         });
     
     /* @ngInject */
-    function Controller() {
+    function Controller(dateService) {
         var vm = this;
+        
+        vm.getDateString = getDateString;
         
         vm.$onInit = function() {
             $(document).ready(function(){
@@ -23,6 +25,8 @@
         
         //////////////
         
-
+        function getDateString() {
+            return dateService.toString(new Date(vm.completedQuiz.stop));
+        }
     }
 })();
