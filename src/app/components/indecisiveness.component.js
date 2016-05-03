@@ -7,7 +7,7 @@
             controller: Controller,
             templateUrl: 'app/components/indecisiveness.html',
             bindings: {
-                title: '=',
+                quizTitle: '=',
                 quizId: '='
             }
         })
@@ -34,11 +34,6 @@
         }
         
         vm.$postLink = function() {
-            $timeout(function() {
-                $(document).ready(function(){
-                    $('.tooltipped').tooltip({delay: 50});
-                });
-            }, 1000)
         }
         
         ////////////////
@@ -87,7 +82,7 @@
         }
         
         function getExcelTitle() {
-            return vm.title + '-Indecisiveness';
+            return vm.quizTitle + '-Indecisiveness';
         }
     }
 })();
