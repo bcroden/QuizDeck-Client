@@ -12,7 +12,7 @@
         })
    
    /* @ngInject */
-   function Controller(proctorService, $routeParams, $interval) {
+   function Controller(proctorService, $routeParams, $interval, $location) {
        var vm = this;
        
        vm.nextQuestion = nextQuestion;
@@ -104,7 +104,10 @@
        
        function finishQuiz() {
            return proctorService
-               .finishQuiz(vm.id);
+               .finishQuiz(vm.id)
+               .then(function() {
+                    $location.path('/completed-quizzes');   
+                });
        }
    }
 })();
