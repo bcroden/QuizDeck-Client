@@ -51,7 +51,7 @@
         }
         
         function quizSearch(quizId) {
-                $location.path('/take/' + this.quizCode);
+                $location.path('/take/' + quizId);
         }
     }
 })();
