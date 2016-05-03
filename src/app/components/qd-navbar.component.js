@@ -40,6 +40,7 @@
                     dataFromServer = response.data;
                     numActiveQuizzes = dataFromServer.length;
                     document.getElementById("activeQuizBadge").innerHTML = numActiveQuizzes;
+                    document.getElementById("activeQuizBadgeMobile").innerHTML = numActiveQuizzes;
                 });
             }
         }
