@@ -20,11 +20,6 @@
         };
         
         vm.$postLink = function() {
-            $timeout(function() {
-                $(document).ready(function(){
-                    $('.tooltipped').tooltip({delay: 50});
-                });
-            }, 1000)
         }
 
         ////////////////
@@ -60,7 +55,6 @@
                     $timeout(function () {
                         $(document).ready(function () {
                             $('.collapsible').collapsible({ accordion: false });
-                            $('.tooltipped').tooltip({delay: 50});
                         });
                     }, 100);
                 })
