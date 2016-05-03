@@ -1,0 +1,39 @@
+<div class="indecisiveness" ng-cloak>
+    
+    <br/>
+
+    <div class="row right-align">
+        <a tooltipped class="btn btn-floating"
+            download="{{$ctrl.getExcelTitle()}}.xlsx" href="#"
+            onclick="return ExcellentExport.excel(this, 'indecisivenessTable', 'Indecisiveness');"
+            data-position="bottom" data-delay="50" data-tooltip="Export To Excel">
+            <i class="large material-icons">file_download</i>
+        </a>
+    </div>
+    
+    <table id="indecisivenessTable" class="striped responsive-table">
+        <thead>
+            <tr>
+                <th data-field="username">Username</th>
+                <th data-field="question" ng-repeat="question in $ctrl.getQuestions()">
+                    <span class="tooltipped" data-position="bottom" data-delay="50" data-tooltip="{{question.question}}">Question {{$index+1}}</span>
+                </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <!--<tr>
+                <td>Average Indecisiveness</td>
+                
+                <td ng-repeat="question in $ctrl.getQuestions()"></td>
+                
+            </tr>-->
+            <tr ng-repeat="user in $ctrl.getParticipants()">
+                <td>{{user}}</td>
+                
+                <td ng-repeat="answer in $ctrl.getParticipantIndecisiveness(user) track by $index">{{answer}}</td>
+                
+            </tr>
+        </tbody>
+    </table>
+</div>

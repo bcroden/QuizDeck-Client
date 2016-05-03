@@ -9,14 +9,30 @@
         });
     
     /* @ngInject */
-    function Controller($location) {
-        this.quizSearch = quizSearch;
+    function Controller($location, $http ,serverUrl) {
+        var vm = this;
+        
+        vm.quizSearch = quizSearch;
         
         //////////////
         
         function quizSearch() {
-            if(this.quizCode)
-                $location.path('/take/' + this.quizCode);
+            vm.quizCode = vm.quizCode.toUpperCase();
+            if(vm.quizCode) {
+                if(vm.quizCode.length === 8)
+                    return $http
+                        .get(serverUrl + '/rest/nonsecure/quiz/shortConvert/' + vm.quizCode)
+                        .then(function(response){
+                            if(response.data !== "null")
+                                $location.path('/take/' + response.data);
+                            else
+                                vm.inputClass = 'invalid';
+                        });
+                else if (vm.quizCode.length === 24)
+                    $location.path('/take/' + vm.quizCode);
+                else
+                    vm.inputClass = 'invalid';
+            }
         }
     }
 })();

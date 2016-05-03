@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col s12">
             <ul class="collection">
-                <a ng-href="/quiz-results/{{quiz.id}}" class="collection-item" ng-repeat="quiz in $ctrl.completedQuizzes">
+                <a ng-href="/quiz-results/{{quiz.id}}" class="collection-item" ng-repeat="quiz in $ctrl.completedQuizzes | orderBy:'-stop'">
                     <h5 class="title">{{quiz.title}}</h5>
                     <p>{{$ctrl.getStopDate(quiz)}}</p>
                 </a>

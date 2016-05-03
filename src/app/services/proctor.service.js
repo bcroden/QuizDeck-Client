@@ -81,20 +81,21 @@
         function finishQuiz(id) {
             return $q
                 .all({
+                    deacivate: stopQuiz(id),
                     quiz: $http.get(serverUrl + '/rest/secure/quiz/searchById/' + id),
-                    submissions: $http.get(serverUrl + '/rest/secure/quiz/viewSubmissions/' + id)
+                    // submissions: $http.get(serverUrl + '/rest/secure/quiz/viewSubmissions/' + id)
                 })
                 .then(function(values) {
                     var quiz = values.quiz.data;
-                    var submissions = values.submissions.data;
+                    // var submissions = values.submissions.data;
                     
                     console.log(quiz);
-                    console.log(submissions);
+                    // console.log(submissions);
                     
                     return $http.post(serverUrl + '/rest/secure/quiz/submit', {
                         quizId: id,
                         quiz: quiz,
-                        submissions: submissions
+                        // submissions: submissions
                     });
                 });
         }
