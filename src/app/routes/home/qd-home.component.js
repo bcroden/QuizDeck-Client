@@ -17,7 +17,11 @@
         //////////////
         
         function quizSearch() {
-            vm.quizCode = vm.quizCode.toUpperCase();
+            try {
+                vm.quizCode = vm.quizCode.toUpperCase();
+            }
+            catch (e) {}
+            
             if(vm.quizCode) {
                 if(vm.quizCode.length === 8)
                     return $http
